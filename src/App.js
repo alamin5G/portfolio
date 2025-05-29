@@ -1,16 +1,20 @@
 import { Award, Brain, Briefcase, Code, Database, Github, GraduationCap, Lightbulb, Linkedin, Mail } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import AnimatedName from './components/AnimatedName';
+import ButterflyEffect from './components/ButterflyEffect';
 import ContactForm from './components/ContactForm';
 import EasterEgg from './components/EasterEgg';
 import FloatingIcons from './components/FloatingIcons';
 import InteractiveSkill from './components/InteractiveSkill';
 import MobileMenu from './components/MobileMenu';
+
 import ParticleBackground from './components/ParticleBackground';
 import ProjectCard from './components/ProjectCard';
 import SkillBar from './components/SkillBar';
 import ThemeToggle from './components/ThemeToggle';
 import TiltImage from './components/TiltImage';
+import TypewriterEffect from './components/TypewriterEffect';
+
 
 // Custom Typewriter Effect Component
 const Typewriter = ({ text, delay }) => {
@@ -45,6 +49,24 @@ const App = () => {
     address: "Tongi, Gazipur 1710, Bangladesh",
     image: "/images/alamin-profile.png" // Update with your image path
   };
+
+  const roleTitles = [
+  "Passionate Java Programmer & Aspiring ML Engineer",
+  "Java + Spring Boot expertise inside",
+  "Currently diving into Machine Learning & CV",
+  "Scalable backend solutions are my specialty",
+  "Let's build something amazing with Next.js!",
+  "MySQL & PostgreSQL? I've got the queries",
+  "Dockerizing apps for fun and profit",
+  "Clean code & efficient algorithms are my jam",
+  "Leveling up my AI game with PyTorch",
+  "Looking for full-stack opportunities!",
+  "From Java to JavaScript and beyond...",
+  "Building the future, one line of code at a time",
+  "Optimizing performance, one query at a time",
+  "Passionate about open source contributions",
+  "Transforming ideas into scalable solutions"
+];
 
   const skills = {
     programming: ["Java", "Python", "C#", "JavaScript"],
@@ -262,6 +284,7 @@ const App = () => {
       <main className="pt-20"> {/* Padding for fixed header */}
         {/* Home Section */}
       <section id="home" className="relative h-screen flex items-center justify-center text-center bg-gradient-animated text-white p-4">
+              <ButterflyEffect />
 
          <FloatingIcons />
   <div className="container mx-auto max-w-4xl">
@@ -275,8 +298,12 @@ const App = () => {
       Hi, I'm <AnimatedName name={profile.name} />
     </h1>
     <p className="text-2xl md:text-3xl font-light mb-8">
-      <Typewriter text={profile.title} delay={70} />
-    </p>
+  <TypewriterEffect 
+    text={roleTitles} 
+    typingSpeed={70} 
+    pauseTime={2000} 
+  />
+</p>
     
     <div className="mt-10 space-y-4">
       <button 
