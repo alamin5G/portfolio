@@ -11,10 +11,10 @@ import ParticleBackground from './components/ParticleBackground';
 import ProjectCard from './components/ProjectCard';
 import ScrollingBioSection from './components/ScrollingBioSection';
 import SectionDebugger from './components/SectionDebugger';
-import SkillBar from './components/SkillBar';
 import ThemeToggle from './components/ThemeToggle';
 import TiltImage from './components/TiltImage';
 import TypewriterEffect from './components/TypewriterEffect';
+
 // Add this import at the top of your App.js
 import './styles/animations.css';
 
@@ -429,59 +429,70 @@ const scrollToSection = (id) => {
       />
           </section>
 
-        {/* Skills Section with SkillBar */}
-        <section id="skills" className="py-16 md:py-24 bg-gray-100 p-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 mb-12">My Skills</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {Object.entries(skills).map(([category, skillList]) => (
-                <div key={category} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="text-2xl font-semibold text-indigo-600 mb-4 capitalize flex items-center">
-                    {category === 'programming' && <Code className="w-6 h-6 mr-2" />}
-                    {category === 'frameworks' && <Lightbulb className="w-6 h-6 mr-2" />}
-                    {category === 'databases' && <Database className="w-6 h-6 mr-2" />}
-                    {category === 'ai_ml' && <Brain className="w-6 h-6 mr-2" />}
-                    {category.replace('_', ' ')} Skills
-                  </h3>
-                  <div className="space-y-4">
-                    {skillList.map((skill, index) => (
-                      <SkillBar 
-                        key={index} 
-                        skill={skill} 
-                        level={skillLevels[category]?.[skill] || 75} 
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      
 
         {/* Update the Skills section to use Interactive Skills */}
-    <section id="skills" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative z-10">
-      <div className="container mx-auto max-w-4xl relative">
-        <div className="bubble absolute -top-10 -left-10 w-20 h-20 bg-indigo-500/10 rounded-full"></div>
-        <div className="bubble absolute top-1/2 -right-10 w-32 h-32 bg-purple-500/10 rounded-full" style={{animationDelay: "2s"}}></div>
-        
-        <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Skills</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
-            <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
-              <Code className="w-6 h-6 mr-2" />
-              Programming Skills
-            </h3>
-            <div className="space-y-4">
-              {skillLevels.programming && Object.entries(skillLevels.programming).map(([skill, level], idx) => (
-                <InteractiveSkill key={idx} skill={skill} level={level} icon={Code} color="indigo" />
-              ))}
-            </div>
-          </div>
+              
           
-          {/* Repeat for other skill categories */}
-        </div>
-      </div>
-    </section>
+              {/* --- My Skills Section (Interactive Only) --- */}
+              <section id="skills" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative z-10">
+                <div className="container mx-auto max-w-4xl relative">
+                  <div className="bubble absolute -top-10 -left-10 w-20 h-20 bg-indigo-500/10 rounded-full"></div>
+                  <div className="bubble absolute top-1/2 -right-10 w-32 h-32 bg-purple-500/10 rounded-full" style={{animationDelay: "2s"}}></div>
+                  
+                  <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Skills</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* Programming Skills */}
+                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                        <Code className="w-6 h-6 mr-2" />
+                        Programming Skills
+                      </h3>
+                      <div className="space-y-4">
+                        {skillLevels.programming && Object.entries(skillLevels.programming).map(([skill, level], idx) => (
+                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Code} color="indigo" />
+                        ))}
+                      </div>
+                    </div>
+                    {/* Frameworks Skills */}
+                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                        <Lightbulb className="w-6 h-6 mr-2" />
+                        Frameworks Skills
+                      </h3>
+                      <div className="space-y-4">
+                        {skillLevels.frameworks && Object.entries(skillLevels.frameworks).map(([skill, level], idx) => (
+                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Lightbulb} color="purple" />
+                        ))}
+                      </div>
+                    </div>
+                    {/* Databases Skills */}
+                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                        <Database className="w-6 h-6 mr-2" />
+                        Database Skills
+                      </h3>
+                      <div className="space-y-4">
+                        {skillLevels.databases && Object.entries(skillLevels.databases).map(([skill, level], idx) => (
+                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Database} color="blue" />
+                        ))}
+                      </div>
+                    </div>
+                    {/* AI/ML Skills */}
+                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                        <Brain className="w-6 h-6 mr-2" />
+                        AI/ML Skills
+                      </h3>
+                      <div className="space-y-4">
+                        {skillLevels.ai_ml && Object.entries(skillLevels.ai_ml).map(([skill, level], idx) => (
+                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Brain} color="teal" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
         {/* Experience Section */}
         <section id="experience" className="py-16 md:py-24 bg-white p-4">
