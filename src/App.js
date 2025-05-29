@@ -114,7 +114,7 @@ const App = () => {
       position: "right"
     },
     {
-      year: "2024-Present",
+      year: "2025-Present",
       title: "Machine Learning Exploration",
       description: "Self-learning Computer Vision and Machine Learning techniques",
       position: "left"
@@ -226,6 +226,35 @@ const App = () => {
     ],
     githubUrl: "https://github.com/alamin5g/ElectronicStore",
     liveUrl: "https://github.com/alamin5g/ElectronicStore"
+  }, 
+    {
+    name: "Equal Bangladesh",
+    organization: "Personal Project for Social Impact",
+    duration: "07/2024 - 09/2024",
+    location: "Dhaka, Bangladesh",
+    description: [
+      "Developed a Spring Boot platform to collect, document, and preserve information about victims of state-led violence during the 2024 Movement in Bangladesh.",
+      "Implemented JWT-based authentication system with role-based access control for enhanced security.",
+      "Created three specialized forms for reporting victims (Death, Missing, Injured) with email OTP verification.",
+      "Built a comprehensive admin dashboard with case management, statistical reporting, and data export features.",
+      "Incorporated audit logging to track all system activities and database backup/restoration tools."
+    ],
+    technologies: [
+      "Java 17+", "Spring Boot", "Spring Security", "JWT Authentication", 
+      "Thymeleaf", "MySQL", "JFreeChart", "Maven", "Docker"
+    ],
+    features: [
+      "User Authentication with JWT",
+      "Email OTP Verification",
+      "Multi-form Case Submission",
+      "Admin Dashboard & Case Management",
+      "Statistical Reporting & Data Export",
+      "Database Backup & Restoration",
+      "Audit Logging System"
+    ],
+    impact: "Created a digital record of historical events, preserving crucial information and helping citizens share stories of those affected by oppression.",
+    githubUrl: "https://github.com/alamin5G/EqualBangla",
+    liveUrl: "https://github.com/alamin5G/EqualBangla" // Add if deployed
   }
 ];
 
