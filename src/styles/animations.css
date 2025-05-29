@@ -1,0 +1,85 @@
+
+/* Hover card effect */
+.hover-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline item animation */
+.timeline-item:hover .hover-card {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+}
+
+/* Reveal text animation */
+.reveal-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9fafb;
+  transform: translateX(-100%);
+  animation: revealText 1.5s ease forwards;
+}
+
+@media (prefers-color-scheme: dark) {
+  .reveal-text::after {
+    background-color: #1f2937;
+  }
+}
+
+@keyframes revealText {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Stat bar progress animation */
+.stat-bar-progress {
+  width: 0;
+  transition: width 1s ease-out;
+}
+
+/* Bubble animations */
+.bubble {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Hover lift effect for cards */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}

@@ -7,13 +7,16 @@ import EasterEgg from './components/EasterEgg';
 import FloatingIcons from './components/FloatingIcons';
 import InteractiveSkill from './components/InteractiveSkill';
 import MobileMenu from './components/MobileMenu';
-
 import ParticleBackground from './components/ParticleBackground';
 import ProjectCard from './components/ProjectCard';
+import ScrollingBioSection from './components/ScrollingBioSection';
+import SectionDebugger from './components/SectionDebugger';
 import SkillBar from './components/SkillBar';
 import ThemeToggle from './components/ThemeToggle';
 import TiltImage from './components/TiltImage';
 import TypewriterEffect from './components/TypewriterEffect';
+// Add this import at the top of your App.js
+import './styles/animations.css';
 
 
 // Custom Typewriter Effect Component
@@ -35,21 +38,89 @@ const Typewriter = ({ text, delay }) => {
 };
 
 const App = () => {
-  // Data extracted from the CV
+
   const profile = {
     name: "Md. Alamin",
-    title: "Passionate Java Programmer & Aspiring ML Engineer",
-    intro: "Passionate Java programmer with Spring Boot, SQL, and a basic understanding on System Design. Currently, exploring Machine Learning (ML) and Computer Vision to enhance problem-solving capabilities and build intelligent systems to make our life easy. Experienced in competitive programming and technical support, focusing on delivering high-quality back-end system (application) with scalable solutions.",
+    image: "/images/alamin-profile.png", // Ensure this path is correct
+    intro: "A passionate Java programmer and aspiring Machine Learning engineer with a strong foundation in software development. I am enthusiastic about creating efficient and scalable backend solutions while exploring the fascinating world of AI and Computer Vision.",
+    address: "Dhaka, Bangladesh",
     contact: {
-      whatsapp: "+88 01822679672",
-      email: "alaminvai5g@gmail.com",
-      linkedin: "https://www.linkedin.com/in/alamin5g",
-      github: "https://github.com/alamin5g"
-    },
-    address: "Tongi, Gazipur 1710, Bangladesh",
-    image: "/images/alamin-profile.png" // Update with your image path
+      email: "alamin@example.com",
+      phone: "+880 123 456 789",
+      whatsapp: "+880 123 456 789",
+      linkedin: "https://linkedin.com/in/mdalamin",
+      github: "https://github.com/mdalamin"
+    }
   };
 
+  // Bio data
+  const bioData = {
+    intro: profile.intro,
+    address: profile.address
+  };
+  
+  const statData = [
+    {
+      icon: (
+        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+      ),
+      title: "Education",
+      value: "BCSE from IUBAT University",
+      progress: "75%"
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+      ),
+      title: "Experience",
+      value: "1 year as Technical Support Engineer",
+      progress: "25%"
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        </svg>
+      ),
+      title: "Projects",
+      value: "2+ full-stack applications built",
+      progress: "60%"
+    }
+  ];
+  
+  const skillsData = [
+    { name: "Spring Boot", bgColor: "bg-indigo-100 dark:bg-indigo-900/50", textColor: "text-indigo-800 dark:text-indigo-200" },
+    { name: "MySQL", bgColor: "bg-blue-100 dark:bg-blue-900/50", textColor: "text-blue-800 dark:text-blue-200" },
+    { name: "Python", bgColor: "bg-green-100 dark:bg-green-900/50", textColor: "text-green-800 dark:text-green-200" },
+    { name: "Machine Learning", bgColor: "bg-purple-100 dark:bg-purple-900/50", textColor: "text-purple-800 dark:text-purple-200" },
+    { name: "Computer Vision", bgColor: "bg-yellow-100 dark:bg-yellow-900/50", textColor: "text-yellow-800 dark:text-yellow-200" }
+  ];
+  
+  const timelineData = [
+    {
+      year: "2021-Present",
+      title: "Pursuing BCSE",
+      description: "Studying Computer Science & Engineering at IUBAT University",
+      position: "left"
+    },
+    {
+      year: "2023-2024",
+      title: "Technical Support Engineer",
+      description: "Working at Crystal Bright Technology providing technical solutions",
+      position: "right"
+    },
+    {
+      year: "2024-Present",
+      title: "Machine Learning Exploration",
+      description: "Self-learning Computer Vision and Machine Learning techniques",
+      position: "left"
+    }
+  ];
+  
   const roleTitles = [
   "Passionate Java Programmer & Aspiring ML Engineer",
   "Java + Spring Boot expertise inside",
@@ -248,9 +319,16 @@ const App = () => {
   ];
 
   // Smooth scrolling
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  };
+// Update your scrollToSection function with this improved version
+const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    console.warn(`Element with ID "${id}" not found in the document.`);
+  }
+};
+    
 
   return (
   <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen relative">
@@ -340,20 +418,16 @@ const App = () => {
 </section>
             
 
-        {/* About Section */}
-        <section id="about" className="py-16 md:py-24 bg-white p-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 mb-12">About Me</h2>
-            <p className="text-lg leading-relaxed text-gray-700 text-center md:text-left">
-              {profile.intro}
-            </p>
-            <div className="mt-8 text-center md:text-left">
-              <p className="text-md text-gray-600">
-                <span className="font-semibold">Address:</span> {profile.address}
-              </p>
-            </div>
-          </div>
-        </section>
+                {/* About Section */}
+        
+         <section id="about" className="py-16 md:py-24 bg-white dark:bg-gray-900 p-4 relative overflow-hidden">
+            <ScrollingBioSection 
+        bio={bioData}
+        stats={statData}
+        skills={skillsData}
+        timeline={timelineData}
+      />
+          </section>
 
         {/* Skills Section with SkillBar */}
         <section id="skills" className="py-16 md:py-24 bg-gray-100 p-4">
@@ -584,6 +658,8 @@ const App = () => {
           <p className="text-sm mt-2">Built with React & Tailwind CSS</p>
         </div>
       </footer>
+
+      <SectionDebugger sections={sections} />
     </div>
   );
 };
