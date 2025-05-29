@@ -204,20 +204,32 @@ const App = () => {
   githubUrl: "https://github.com/alamin5g/gold-lab-management",
   liveUrl: "https://gold-lab.alamin.dev" // Optional - remove if you don't have a live demo
 }, 
-    {
-    name: "E-Commerce Platform",
+  {
+    name: "Electronic Store E-Commerce Application",
     organization: "Personal Project",
-    duration: "Jan 2023 - Mar 2023",
-    technologies: ["Java", "Spring Boot", "MySQL", "React", "Redux"],
-    description: [
-      "Built a full-stack e-commerce platform with user authentication",
-      "Implemented payment processing using Stripe API",
-      "Created responsive UI with React and Material UI"
+    duration: "03/2025 - 05/2025",
+    technologies: [
+      "Java 17+", "Spring Boot 3+", "Spring MVC", "Spring Data JPA", "Spring Security",
+      "Thymeleaf", "Bootstrap 5", "MySQL", "Lombok", "ModelMapper", "Maven"
     ],
-    githubUrl: "https://github.com/alamin5g/ecommerce-platform",
-    liveUrl: "https://ecommerce-demo.alamin.dev" // optional
+    description: [
+      "An advanced Spring Boot e-commerce platform for electronics retail, featuring a complete shopping experience for customers and a robust admin management system.",
+      "Customer Features: Secure authentication, product browsing, shopping cart, multi-step checkout, order management, user profile.",
+      "Admin Features: Dashboard, product/category/brand management, order management, user management, contact message management.",
+      "Tech Stack: Java 17+, Spring Boot 3+, Spring MVC, Spring Data JPA, Spring Security, Jakarta Validation, Thymeleaf, Bootstrap 5, MySQL, Lombok, ModelMapper, Maven."
+    ],
+    stack: [
+      "Backend: Java 17+, Spring Boot 3+, Spring MVC, Spring Data JPA, Spring Security, Jakarta Validation",
+      "Frontend: Thymeleaf, Bootstrap 5, HTML5, CSS3, JavaScript",
+      "Database: MySQL",
+      "Tools: Lombok, ModelMapper, Maven"
+    ],
+    githubUrl: "https://github.com/alamin5g/ElectronicStore",
+    liveUrl: "https://github.com/alamin5g/ElectronicStore"
   }
-  ];
+];
+
+  
 
   const education = [
     {
@@ -520,15 +532,15 @@ const scrollToSection = (id) => {
         
               {/* Update Projects section to use ProjectCards */}
     <section id="projects" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4">
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </div>
-      </div>
-    </section>
+  <div className="container mx-auto max-w-4xl">
+    <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Projects</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map((project, index) => (
+        <ProjectCard key={index} project={project} />
+      ))}
+    </div>
+  </div>
+</section>
 
         {/* Education Section */}
         <section id="education" className="py-16 md:py-24 bg-white p-4">
