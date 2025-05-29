@@ -1,4 +1,4 @@
-import { Award, Brain, Briefcase, Code, Database, Github, GraduationCap, Lightbulb, Linkedin, Mail } from 'lucide-react';
+import { Award, Brain, Briefcase, Code, Database, GraduationCap, Lightbulb } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import AnimatedName from './components/AnimatedName';
 import ButterflyEffect from './components/ButterflyEffect';
@@ -201,8 +201,8 @@ const App = () => {
     "Tailored software to meet specific client requirements for the previous organization."
   ],
   technologies: ["Java", "Spring Boot", "MySQL", "Spring Web MVC", "Spring Data JPA", "Thymeleaf", "Bootstrap", "JavaScript"],
-  githubUrl: "https://github.com/alamin5g/gold-lab-management",
-  liveUrl: "https://gold-lab.alamin.dev" // Optional - remove if you don't have a live demo
+  githubUrl: "https://github.com/alamin5G/CbtGoldLab",
+  liveUrl: "https://github.com/alamin5G/CbtGoldLab" // Optional - remove if you don't have a live demo
 }, 
   {
     name: "Electronic Store E-Commerce Application",
@@ -305,15 +305,12 @@ const App = () => {
       name: "Dr. Md. Hasibur Rashid Chayon",
       title: "Associate Professor",
       institution: "International University of Business Agriculture and Technology",
-      email: "hchayon@gmail.com",
-      phone: "+88 01912643723"
+
     },
     {
       name: "Rubayea Ferdows",
       title: "Associate Professor",
       institution: "International University of Business Agriculture and Technology",
-      email: "rubayea@iubat.edu",
-      phone: "+88 01677066697"
     }
   ];
 
@@ -621,57 +618,18 @@ const scrollToSection = (id) => {
         </section>
 
         {/* Contact & References Section */}
-        <section id="contact" className="py-16 md:py-24 bg-white p-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 mb-12">Contact & References</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Contact Info */}
-              <div className="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-red-500">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
-                <div className="space-y-4 mb-8">
-                  <p className="flex items-center text-gray-700">
-                    <Mail className="w-5 h-5 mr-3 text-indigo-600" />
-                    <a href={`mailto:${profile.contact.email}`} className="hover:underline">{profile.contact.email}</a>
-                  </p>
-                  {/* WhatsApp Icon (inline SVG) */}
-                  <p className="flex items-center text-gray-700">
-                    <svg className="w-5 h-5 mr-3 text-indigo-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12.04 2c-5.45 0-9.91 4.46-9.91 9.91 0 1.75.46 3.45 1.35 4.96l-1.4 5.16 5.29-1.38c1.45.79 3.08 1.21 4.67 1.21 5.46 0 9.92-4.46 9.92-9.91s-4.46-9.91-9.92-9.91zm.04 1.57c4.61 0 8.34 3.73 8.34 8.34 0 4.61-3.73 8.34-8.34 8.34-1.57 0-3.1-.44-4.43-1.25l-4.66 1.22 1.24-4.56c-.85-1.37-1.32-2.92-1.32-4.55 0-4.61 3.73-8.34 8.34-8.34zm-2.19 2.76c-.22 0-.44.08-.6.24-.16.16-.24.38-.24.64v.08c0 .26.08.48.24.64.16.16.38.24.6.24h.08c.22 0 .44-.08.6-.24.16-.16.24-.38.24-.64v-.08c0-.26-.08-.48-.24-.64-.16-.16-.38-.24-.6-.24zm4.38 0c-.22 0-.44.08-.6.24-.16.16-.24.38-.24.64v.08c0 .26.08.48.24.64.16.16.38.24.6.24h.08c.22 0 .44-.08.6-.24.16-.16.24-.38.24-.64v-.08c0-.26-.08-.48-.24-.64-.16-.16-.38-.24-.6-.24zm-2.19 3.48c-.22 0-.44.08-.6.24-.16.16-.24.38-.24.64v.08c0 .26.08.48.24.64.16.16.38.24.6.24h.08c.22 0 .44-.08.6-.24.16-.16.24-.38.24-.64v-.08c0-.26-.08-.48-.24-.64-.16-.16-.38-.24-.6-.24zm4.38 0c-.22 0-.44.08-.6.24-.16.16-.24.38-.24.64v.08c0 .26.08.48.24.64.16.16.38.24.6.24h.08c.22 0 .44-.08.6-.24.16-.16.24-.38.24-.64v-.08c0-.26-.08-.48-.24-.64-.16-.16-.38-.24-.6-.24zm-2.19 3.48c-.22 0-.44.08-.6.24-.16.16-.24.38-.24.64v.08c0 .26.08.48.24.64.16.16.38.24.6.24h.08c.22 0 .44-.08.6-.24.16-.16.24-.38.24-.64v-.08c0-.26-.08-.48-.24-.64-.16-.16-.38-.24-.6-.24z" />
-                    </svg>
-                    <a href={`https://wa.me/${profile.contact.whatsapp.replace(/\s|\+/g, '')}`} target="_blank" rel="noopener noreferrer" className="hover:underline">{profile.contact.whatsapp}</a>
-                  </p>
-                  <p className="flex items-center text-gray-700">
-                    <Linkedin className="w-5 h-5 mr-3 text-indigo-600" />
-                    <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline">LinkedIn Profile</a>
-                  </p>
-                  <p className="flex items-center text-gray-700">
-                    <Github className="w-5 h-5 mr-3 text-indigo-600" />
-                    <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub Profile</a>
-                  </p>
-                </div>
-                
-                {/* Add the contact form */}
-                <ContactForm />
-              </div>
-
-              {/* References */}
-              <div className="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">References</h3>
-                <div className="space-y-6">
-                  {references.map((ref, index) => (
-                    <div key={index} className="border-b pb-4 last:border-b-0 last:pb-0">
-                      <p className="font-semibold text-lg text-gray-800">{ref.name}</p>
-                      <p className="text-gray-700">{ref.title}, {ref.institution}</p>
-                      <p className="text-gray-600">Email: {ref.email}</p>
-                      <p className="text-gray-600">Phone: {ref.phone}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <section id="contact" className="py-16 md:py-24 bg-white dark:bg-gray-900 p-4">
+  <div className="container mx-auto max-w-4xl">
+    <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">Contact</h2>
+    
+    <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <ContactForm 
+        profile={profile.contact}
+        references={references}
+      />
+    </div>
+  </div>
+</section>
       </main>
 
       {/* Footer */}
