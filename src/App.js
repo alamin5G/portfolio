@@ -4,6 +4,7 @@ import ButterflyEffect from './components/ButterflyEffect';
 import ContactFloatingElements from './components/ContactFloatingElements';
 import ContactForm from './components/ContactForm';
 import FloatingIcons from './components/FloatingIcons';
+import Footer from './components/Footer';
 import InteractiveSkill from './components/InteractiveSkill';
 import MobileMenu from './components/MobileMenu';
 import ProjectCard from './components/ProjectCard';
@@ -15,6 +16,7 @@ import TypewriterEffect from './components/TypewriterEffect';
 
 // Add this import at the top of your App.js
 import './styles/animations.css'; // Ensure this path is correct
+import './styles/footer.css'; // Ensure this path is correct
 import './styles/hobbies-animation.css';
 
 
@@ -821,11 +823,7 @@ const App = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center p-6 mt-12">
-        <div className="container mx-auto">
-          <p>&copy; {new Date().getFullYear()} alamin5g. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer profile={profile.contact} />
 
       <SectionDebugger sections={sections} />
 
