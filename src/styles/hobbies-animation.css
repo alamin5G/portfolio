@@ -200,3 +200,42 @@
 .dark .card-back h3 {
   color: transparent !important;
 }
+
+/* Add gradient animation to front card titles */
+.card-front h3 {
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% auto;
+  animation: textGradient 3s linear infinite;
+  transition: all 0.3s ease;
+}
+
+/* Different gradient text colors for front cards based on card index */
+.hobby-card-wrapper:nth-child(4n+1) .card-front h3 {
+  background-image: linear-gradient(45deg, #6366f1, #a5b4fc, #6366f1);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.hobby-card-wrapper:nth-child(4n+2) .card-front h3 {
+  background-image: linear-gradient(45deg, #10b981, #5eead4, #10b981);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.hobby-card-wrapper:nth-child(4n+3) .card-front h3 {
+  background-image: linear-gradient(45deg, #f43f5e, #fda4af, #f43f5e);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.hobby-card-wrapper:nth-child(4n+4) .card-front h3 {
+  background-image: linear-gradient(45deg, #f59e0b, #fcd34d, #f59e0b);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Override dark mode text color for front card titles */
+.dark .card-front h3 {
+  color: transparent !important;
+}
