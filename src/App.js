@@ -8,13 +8,14 @@ import FloatingIcons from './components/FloatingIcons';
 import Footer from './components/Footer';
 import InteractiveSkill from './components/InteractiveSkill';
 import MobileMenu from './components/MobileMenu';
-import ProjectCard from './components/ProjectCard';
+import ProjectsSection from './components/ProjectSection'; // Add this import (note: your file is named ProjectSection.jsx)
 import ScrollingBioSection from './components/ScrollingBioSection';
 import SectionDebugger from './components/SectionDebugger';
 import StrengthsSection from './components/StrengthsSection';
 import ThemeToggle from './components/ThemeToggle';
 import TiltImage from './components/TiltImage';
 import TypewriterEffect from './components/TypewriterEffect';
+
 
         
         // Then replace your certificates section with:
@@ -581,16 +582,8 @@ const certificates = [
         </section>
 
 
-        {/* Update Projects section to use ProjectCards */}
-        <section id="projects" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
-              ))}
-            </div>
-          </div>
+        <section id="projects">
+          <ProjectsSection projects={projects} />
         </section>
 
         {/* Education Section */}

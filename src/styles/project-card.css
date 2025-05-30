@@ -39,7 +39,7 @@
 
 /* Show the border gradient on hover */
 .project-card:hover .border-effect::before {
-  opacity: 0.9;
+  opacity: 0.1;
 }
 
 /* Remove all other border-gradient classes */
@@ -47,4 +47,25 @@
 .border-gradient::before,
 .border-gradient-wrapper {
   display: none;
+}
+
+.projects-title {
+  font-size: 2.5rem; /* Adjust as needed */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem; /* Adjust as needed */
+}
+
+.projects-title-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--gradient-start, #9333ea),
+    var(--gradient-end, #d946ef),
+    var(--gradient-start, #9333ea)
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-shift 5s ease infinite;
 }

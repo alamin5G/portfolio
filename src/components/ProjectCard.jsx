@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, ExternalLink, Github } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const ProjectCard = ({ project }) => {
@@ -6,45 +6,36 @@ const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
 
-  // Handle link clicks without triggering card flip
   const handleLinkClick = (e, url) => {
     e.stopPropagation();
     window.open(url, '_blank');
   };
 
-  // For tracking mouse position for 3D hover effect
   const handleMouseMove = (e) => {
     if (!cardRef.current || !isHovered) return;
 
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left; // x position within the element
-    const y = e.clientY - rect.top;  // y position within the element
-
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
+    const rotateY = ((x - centerX) / centerX) * 5;
+    const rotateX = ((centerY - y) / centerY) * 5;
 
-    // Calculate rotation based on mouse position
-    const rotateY = ((x - centerX) / centerX) * 5; // Max 5 degrees
-    const rotateX = ((centerY - y) / centerY) * 5; // Max 5 degrees
-
-    // Apply the transform to create 3D tilt effect when not flipped
     if (!isFlipped) {
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     }
   };
 
-  // Reset transform when mouse leaves
   const handleMouseLeave = () => {
     setIsHovered(false);
     if (cardRef.current) {
-      cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-      setTimeout(() => {
-        if (cardRef.current && isFlipped) {
-          cardRef.current.style.transform = `perspective(1000px) rotateY(180deg)`;
-        }
-      }, 150);
+      if (isFlipped) {
+        cardRef.current.style.transform = `perspective(1000px) rotateY(180deg)`;
+      } else {
+        cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+      }
     }
   };
 
@@ -53,14 +44,20 @@ const ProjectCard = ({ project }) => {
       if (isFlipped) {
         cardRef.current.style.transform = `perspective(1000px) rotateY(180deg)`;
       } else {
-        cardRef.current.style.transform = `perspective(1000px) rotateY(0deg)`;
+         if (!isHovered) { 
+            cardRef.current.style.transform = `perspective(1000px) rotateY(0deg)`;
+         }
       }
     }
-  }, [isFlipped]);
+  }, [isFlipped]); 
 
-  // Get a color scheme for the project based on its name
+   useEffect(() => { 
+    if (cardRef.current && !isFlipped && !isHovered) {
+        cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+    }
+  }, [isHovered, isFlipped]);
+
   const getProjectColor = () => {
-    // Simple hash function to get a consistent color for the same project name
     const stringToHash = str => {
       let hash = 0;
       for (let i = 0; i < str.length; i++) {
@@ -74,88 +71,41 @@ const ProjectCard = ({ project }) => {
     return projectColors[colorIndex];
   };
 
-  // Color combinations - refined gradients
   const projectColors = [
-    // Deep purple to violet gradient
-    {
-      primary: 'from-purple-600 to-violet-500',
-      hover: 'from-purple-700 to-violet-600',
-      light: 'bg-purple-50 dark:bg-purple-900/30',
-      text: 'text-purple-600 dark:text-purple-300',
-      border: 'border-purple-200 dark:border-purple-800'
-    },
-
-    // Rich emerald to teal gradient
-    {
-      primary: 'from-emerald-600 to-teal-500',
-      hover: 'from-emerald-700 to-teal-600',
-      light: 'bg-emerald-50 dark:bg-emerald-900/30',
-      text: 'text-emerald-600 dark:text-emerald-300',
-      border: 'border-emerald-200 dark:border-emerald-800'
-    },
-
-    // Warm amber to orange gradient
-    {
-      primary: 'from-amber-500 to-orange-500',
-      hover: 'from-amber-600 to-orange-600',
-      light: 'bg-amber-50 dark:bg-amber-900/30',
-      text: 'text-amber-600 dark:text-amber-300',
-      border: 'border-amber-200 dark:border-amber-800'
-    },
-
-    // Rose to fuchsia gradient
-    {
-      primary: 'from-rose-500 to-fuchsia-500',
-      hover: 'from-rose-600 to-fuchsia-600',
-      light: 'bg-rose-50 dark:bg-rose-900/30',
-      text: 'text-rose-600 dark:text-rose-300',
-      border: 'border-rose-200 dark:border-rose-800'
-    },
-
-    // Deep red to crimson gradient
-    {
-      primary: 'from-red-600 to-rose-500',
-      hover: 'from-red-700 to-rose-600',
-      light: 'bg-red-50 dark:bg-red-900/30',
-      text: 'text-red-600 dark:text-red-300',
-      border: 'border-red-200 dark:border-red-800'
-    }
+    { primary: 'from-purple-600 to-violet-500', hover: 'hover:from-purple-700 hover:to-violet-600', light: 'bg-purple-50 dark:bg-purple-900/30', text: 'text-purple-600 dark:text-purple-300', border: 'border-purple-200 dark:border-purple-800' },
+    { primary: 'from-emerald-600 to-teal-500', hover: 'hover:from-emerald-700 hover:to-teal-600', light: 'bg-emerald-50 dark:bg-emerald-900/30', text: 'text-emerald-600 dark:text-emerald-300', border: 'border-emerald-200 dark:border-emerald-800' },
+    { primary: 'from-amber-500 to-orange-500', hover: 'hover:from-amber-600 hover:to-orange-600', light: 'bg-amber-50 dark:bg-amber-900/30', text: 'text-amber-600 dark:text-amber-300', border: 'border-amber-200 dark:border-amber-800' },
+    { primary: 'from-rose-500 to-fuchsia-500', hover: 'hover:from-rose-600 hover:to-fuchsia-600', light: 'bg-rose-50 dark:bg-rose-900/30', text: 'text-rose-600 dark:text-rose-300', border: 'border-rose-200 dark:border-rose-800' },
+    { primary: 'from-red-600 to-rose-500', hover: 'hover:from-red-700 hover:to-rose-600', light: 'bg-red-50 dark:bg-red-900/30', text: 'text-red-600 dark:text-red-300', border: 'border-red-200 dark:border-red-800' }
   ];
 
   const colorScheme = getProjectColor();
-  
-  // Set up CSS variables for gradient colors
+
   useEffect(() => {
     if (cardRef.current && colorScheme) {
       try {
-        // Parse the color names from the primary gradient
         const parts = colorScheme.primary.split(' ');
-        const startColor = parts.find(p => p.startsWith('from-'))?.replace('from-', '') || 'purple';
-        const endColor = parts.find(p => p.startsWith('to-'))?.replace('to-', '') || 'violet';
-        
-        // Set CSS variables for the gradient colors based on Tailwind's palette
+        const startColorName = parts.find(p => p.startsWith('from-'))?.replace('from-', '');
+        const endColorName = parts.find(p => p.startsWith('to-'))?.replace('to-', '');
+
         const colorMap = {
-          'purple': '#9333ea',
-          'violet': '#7c3aed',
-          'emerald': '#10b981',
-          'teal': '#14b8a6',
-          'amber': '#f59e0b',
-          'orange': '#f97316',
-          'rose': '#e11d48',
-          'fuchsia': '#d946ef',
-          'red': '#dc2626'
+          'purple': '#9333ea', 'violet': '#7c3aed', 'emerald': '#10b981', 'teal': '#14b8a6',
+          'amber': '#f59e0b', 'orange': '#f97316', 'rose': '#e11d48', 'fuchsia': '#d946ef', 'red': '#dc2626'
         };
-        
-        // Extract base color names - handle potential undefined values
-        const startBase = startColor?.split('-')[0] || 'purple';
-        const endBase = endColor?.split('-')[0] || 'violet';
-        
+
+        const startBase = startColorName?.split('-')[0] || 'purple';
+        const endBase = endColorName?.split('-')[0] || 'violet';
+
         cardRef.current.style.setProperty('--gradient-start', colorMap[startBase] || '#9333ea');
         cardRef.current.style.setProperty('--gradient-end', colorMap[endBase] || '#d946ef');
+        
+        const rgbStart = parseInt(colorMap[startBase].slice(1,3),16) + ',' + parseInt(colorMap[startBase].slice(3,5),16) + ',' + parseInt(colorMap[startBase].slice(5,7),16);
+        cardRef.current.style.setProperty('--gradient-start-rgb', rgbStart);
+
       } catch (error) {
-        // Fallback to default colors if parsing fails
         cardRef.current.style.setProperty('--gradient-start', '#9333ea');
         cardRef.current.style.setProperty('--gradient-end', '#d946ef');
+        cardRef.current.style.setProperty('--gradient-start-rgb', '147,51,234');
         console.error('Error setting color variables:', error);
       }
     }
@@ -175,22 +125,17 @@ const ProjectCard = ({ project }) => {
       >
         {/* Front of card */}
         <div className="absolute w-full h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden backface-hidden border border-transparent transition-all duration-300 group border-effect">
-          {/* Animated border wrapper */}
-
-          {/* Top colored bar with animation */}
           <div className={`h-1.5 bg-gradient-to-r ${colorScheme.primary} w-full animate-gradient-shift`}></div>
 
           <div className="p-6 relative z-10">
             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-1.5">{project.name}</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm">{project.organization} | {project.duration}</p>
 
-            {/* Technologies */}
             <div className="flex flex-wrap gap-1.5 mt-4">
               {project.technologies.slice(0, 4).map((tech, idx) => (
                 <span
                   key={idx}
-                  className={`${colorScheme.light} ${colorScheme.text} text-xs font-medium px-2.5 py-1 rounded-full
-                    transform transition-all duration-300 hover:scale-105 hover:shadow-sm`}
+                  className={`${colorScheme.light} ${colorScheme.text} text-xs font-medium px-2.5 py-1 rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-sm`}
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
                   {tech}
@@ -203,7 +148,6 @@ const ProjectCard = ({ project }) => {
               )}
             </div>
 
-            {/* Project thumbnail or icon - optional */}
             <div className="my-5 flex justify-center">
               {project.image ? (
                 <img
@@ -218,7 +162,6 @@ const ProjectCard = ({ project }) => {
               )}
             </div>
 
-            {/* Project links */}
             <div className="flex space-x-3 mt-4">
               {project.githubUrl && (
                 <button
@@ -248,10 +191,8 @@ const ProjectCard = ({ project }) => {
             </div>
           </div>
 
-          {/* Corner gradient that appears on hover */}
           <div className="corner-gradient"></div>
 
-          {/* Decorative top-right corner */}
           <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden">
             <div className={`absolute transform rotate-45 bg-gradient-to-r ${colorScheme.primary} text-white py-1 px-6 -right-6 top-4 animate-gradient-shift`}></div>
           </div>
@@ -259,9 +200,6 @@ const ProjectCard = ({ project }) => {
 
         {/* Back of card */}
         <div className="absolute w-full h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden rotate-y-180 backface-hidden border border-transparent transition-all duration-300 group">  
-          {/* Animated border for back side too */}
-          
-          {/* Top colored bar */}
           <div className={`h-1.5 bg-gradient-to-r ${colorScheme.primary} w-full animate-gradient-shift`}></div>
 
           <div className="p-6 relative z-10">
@@ -283,7 +221,6 @@ const ProjectCard = ({ project }) => {
               </ul>
             </div>
 
-            {/* Project links on back side too */}
             <div className="flex space-x-3 mt-6">
               {project.githubUrl && (
                 <button
@@ -309,15 +246,14 @@ const ProjectCard = ({ project }) => {
 
             <div className="absolute bottom-4 left-0 right-0 text-center">
               <div className="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors cursor-pointer">
+                <ChevronLeft className="w-3.5 h-3.5 mr-1 details-arrow transition-transform duration-300" />
                 <span>Flip back</span>
               </div>
             </div>
           </div>
           
-          {/* Corner gradient for back side too */}
           <div className="corner-gradient"></div>
           
-          {/* Decorative top-right corner for back side */}
           <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden">
             <div className={`absolute transform rotate-45 bg-gradient-to-r ${colorScheme.primary} text-white py-1 px-6 -right-6 top-4 animate-gradient-shift`}></div>
           </div>
