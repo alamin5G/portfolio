@@ -1,18 +1,46 @@
-import { Award, ChevronDown, ChevronUp, Download, ExternalLink, Eye } from 'lucide-react';
+import { Award, Calendar, ChevronDown, ChevronUp, ExternalLink, Eye } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const CertificateCard = ({ certificate, index }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const expandRef = useRef(null);
   
   // Get certificate color theme based on index
   const getThemeColors = (idx) => {
     const themes = [
-      { border: 'border-blue-500', bg: 'from-blue-500 to-indigo-600', light: 'bg-blue-50 dark:bg-blue-900/20', icon: 'text-blue-600 dark:text-blue-400', glow: 'shadow-blue-500/20' },
-      { border: 'border-purple-500', bg: 'from-purple-500 to-fuchsia-600', light: 'bg-purple-50 dark:bg-purple-900/20', icon: 'text-purple-600 dark:text-purple-400', glow: 'shadow-purple-500/20' },
-      { border: 'border-green-500', bg: 'from-emerald-500 to-teal-600', light: 'bg-emerald-50 dark:bg-emerald-900/20', icon: 'text-emerald-600 dark:text-emerald-400', glow: 'shadow-emerald-500/20' },
-      { border: 'border-amber-500', bg: 'from-amber-500 to-orange-600', light: 'bg-amber-50 dark:bg-amber-900/20', icon: 'text-amber-600 dark:text-amber-400', glow: 'shadow-amber-500/20' }
+      { 
+        primary: 'from-blue-500 to-indigo-600',
+        border: 'border-blue-400 dark:border-blue-500',
+        light: 'bg-blue-50 dark:bg-blue-900/20', 
+        icon: 'text-blue-600 dark:text-blue-400', 
+        glow: 'shadow-blue-500/30',
+        bg: 'bg-blue-500/20 dark:bg-blue-600/10'
+      },
+      { 
+        primary: 'from-purple-500 to-violet-600',
+        border: 'border-purple-400 dark:border-purple-500',
+        light: 'bg-purple-50 dark:bg-purple-900/20', 
+        icon: 'text-purple-600 dark:text-purple-400', 
+        glow: 'shadow-purple-500/30',
+        bg: 'bg-purple-500/20 dark:bg-purple-600/10'
+      },
+      { 
+        primary: 'from-emerald-500 to-teal-600',
+        border: 'border-emerald-400 dark:border-emerald-500',
+        light: 'bg-emerald-50 dark:bg-emerald-900/20', 
+        icon: 'text-emerald-600 dark:text-emerald-400', 
+        glow: 'shadow-emerald-500/30',
+        bg: 'bg-emerald-500/20 dark:bg-emerald-600/10'
+      },
+      { 
+        primary: 'from-amber-500 to-orange-600',
+        border: 'border-amber-400 dark:border-amber-500',
+        light: 'bg-amber-50 dark:bg-amber-900/20', 
+        icon: 'text-amber-600 dark:text-amber-400', 
+        glow: 'shadow-amber-500/30',
+        bg: 'bg-amber-500/20 dark:bg-amber-600/10'
+      }
     ];
     
     return themes[idx % themes.length];
@@ -20,166 +48,173 @@ const CertificateCard = ({ certificate, index }) => {
   
   const theme = getThemeColors(index);
 
-  const handleCardFlip = (e) => {
+  const toggleExpanded = (e) => {
     e.stopPropagation();
-    setIsFlipped(!isFlipped);
+    setIsExpanded(!isExpanded);
   };
   
+  useEffect(() => {
+    if (expandRef.current) {
+      expandRef.current.style.maxHeight = isExpanded ? `${expandRef.current.scrollHeight}px` : '0';
+    }
+  }, [isExpanded]);
+
   return (
     <div 
-      className="certificate-card-perspective"
+      className={`certificate-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden
+        border border-${theme.primary.split('-')[1]}-300/30 dark:border-${theme.primary.split('-')[1]}-500/30
+        ${isHovered ? `${theme.glow} shadow-lg` : 'shadow-md'} 
+        transition-all duration-300`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div 
-        className={`certificate-card-inner ${isFlipped ? 'is-flipped' : ''}`}
-        style={{ transformStyle: 'preserve-3d' }}
-      >
-        {/* Front of the card */}
-        <div 
-          className={`certificate-card-front bg-white dark:bg-gray-800 rounded-xl shadow-lg 
-            ${isHovered ? `${theme.glow} shadow-xl dark:shadow-lg dark:shadow-${theme.bg.split(' ')[0].replace('from-', '')}-900/30` : ''} 
-            transition-all duration-300 overflow-hidden relative`}
-        >
-          <div className={`h-2 bg-gradient-to-r ${theme.bg}`}></div>
-          <div className="p-6">
-            <div className="flex items-center justify-between">
-              <div className={`p-3 rounded-full ${theme.light} ${theme.icon} mb-4 transform transition-transform duration-300 ${isHovered ? 'rotate-12 scale-110' : ''}`}>
-                <Award className="w-6 h-6" />
-              </div>
-              <span className={`text-xs font-medium text-gray-500 dark:text-gray-400 px-2 py-1 
-                ${isHovered ? `bg-gradient-to-r ${theme.bg} text-white` : 'bg-gray-100 dark:bg-gray-700'} 
-                rounded-full transition-all duration-300`}>
-                {certificate.date}
-              </span>
-            </div>
-            
-            <h3 className={`text-xl font-semibold mb-2 transition-colors duration-300 
-              ${isHovered ? theme.icon.replace('text', 'text') : 'text-gray-800 dark:text-gray-100'}`}>
-              {certificate.name}
-            </h3>
-            
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              {certificate.issuer}
-            </p>
-            
-            {/* Certificate skills or topics */}
-            {certificate.skills && (
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-2">
-                  {certificate.skills.map((skill, idx) => (
-                    <span 
-                      key={idx}
-                      className={`skill-tag text-xs px-2 py-1 rounded-full ${theme.light} ${theme.icon} 
-                        transition-all duration-300 transform ${isHovered ? 'scale-105' : ''}`}
-                      style={{ animationDelay: `${idx * 0.1}s` }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            <div className="mt-4 flex justify-between items-center">
-              <a 
-                href={certificate.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={`flex items-center font-medium hover:underline ${isHovered ? theme.icon : 'text-gray-600 dark:text-gray-400'} transition-colors duration-300`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Eye className="w-4 h-4 mr-1" />
-                View Certificate
-                <ExternalLink className={`w-4 h-4 ml-1 transition-transform duration-300 ${isHovered ? 'transform translate-x-1' : ''}`} />
-              </a>
-              
-              <button
-                onClick={handleCardFlip}
-                className={`flip-button p-2 rounded-full ${theme.light} ${theme.icon} opacity-0 transform scale-0 
-                  ${isHovered ? 'opacity-100 scale-100' : ''} transition-all duration-300 hover:${theme.light.replace('bg', 'bg-opacity-75 bg')}`}
-                aria-label="Flip card"
-              >
-                <ChevronUp className="w-4 h-4" />
-              </button>
-            </div>
+      {/* Top gradient bar */}
+      <div className={`h-1.5 bg-gradient-to-r ${theme.primary}`}></div>
+      
+      <div className="p-5">
+        <div className="flex items-start justify-between">
+          {/* Certificate icon */}
+          <div className={`cert-icon p-2.5 rounded-full ${theme.light} ${theme.icon}`}>
+            <Award className="w-5 h-5" />
           </div>
           
-          {/* Decorative corner shape */}
-          <div className={`absolute -bottom-6 -right-6 w-12 h-12 rounded-full bg-gradient-to-r ${theme.bg} opacity-20 
-            transform ${isHovered ? 'scale-150' : 'scale-100'} transition-transform duration-500`}>
-          </div>
+          {/* Date badge */}
+          <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex items-center
+            ${isHovered ? `bg-gradient-to-r ${theme.primary} text-white` : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'} 
+            transition-all duration-300`}>
+            <Calendar className="w-3 h-3 mr-1" />
+            {certificate.date}
+          </span>
         </div>
         
-        {/* Back of the card */}
-        <div 
-          className={`certificate-card-back bg-white dark:bg-gray-800 rounded-xl shadow-lg 
-            ${isHovered ? `${theme.glow} shadow-xl` : ''} 
-            transition-all duration-300 overflow-hidden`}
-        >
-          <div className={`h-2 bg-gradient-to-r ${theme.bg}`}></div>
-          <div className="p-6 h-full flex flex-col">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className={`text-lg font-semibold ${theme.icon}`}>Certificate Details</h3>
-              <button
-                onClick={handleCardFlip}
-                className={`p-2 rounded-full ${theme.light} ${theme.icon}`}
-                aria-label="Flip card back"
-              >
-                <ChevronDown className="w-4 h-4" />
-              </button>
-            </div>
-            
-            <div className="flex-grow prose dark:prose-invert max-w-none prose-sm">
-              {certificate.description ? (
-                <p>{certificate.description}</p>
-              ) : (
-                <ul className="space-y-2 list-disc pl-5">
-                  <li>Issued by: <span className="font-medium">{certificate.issuer}</span></li>
-                  <li>Date: <span className="font-medium">{certificate.date}</span></li>
-                  <li>Credential ID: <span className="font-medium">{certificate.credentialId || 'Available on certificate'}</span></li>
-                  {certificate.expirationDate && (
-                    <li>Valid until: <span className="font-medium">{certificate.expirationDate}</span></li>
-                  )}
-                </ul>
-              )}
-              
-              {certificate.achievements && (
-                <div className="mt-4">
-                  <h4 className="font-medium text-sm">Key achievements:</h4>
-                  <ul className="list-disc pl-5 space-y-1 mt-2">
-                    {certificate.achievements.map((achievement, idx) => (
-                      <li key={idx} className="text-sm">{achievement}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-            
-            <div className="mt-4 flex justify-between items-center pt-4 border-t border-gray-200 dark:border-gray-700">
-              <a 
-                href={certificate.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={`flex items-center font-medium text-sm ${theme.icon}`}
-              >
-                <Eye className="w-4 h-4 mr-1" />
-                View Original
-              </a>
-              
-              {certificate.downloadLink && (
-                <a 
-                  href={certificate.downloadLink} 
-                  className={`flex items-center font-medium text-sm ${theme.icon}`}
-                  download
-                >
-                  <Download className="w-4 h-4 mr-1" />
-                  Download PDF
-                </a>
-              )}
-            </div>
-          </div>
+        {/* Certificate title */}
+        <h3 className={`text-lg font-semibold mt-3 mb-1 transition-colors duration-300 
+          ${isHovered ? theme.icon : 'text-gray-800 dark:text-gray-100'}`}>
+          {certificate.name}
+        </h3>
+        
+        {/* Issuer */}
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+          {certificate.issuer}
+        </p>
+        
+        {/* Skills tags */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {certificate.skills && certificate.skills.map((skill, idx) => (
+            <span 
+              key={idx}
+              className="skill-tag text-xs px-2 py-0.5 rounded-full 
+                transition-all duration-300"
+              style={{ 
+                background: `linear-gradient(${isHovered ? '140deg' : '120deg'}, var(--cert-bg-start), var(--cert-bg-end))`,
+                color: 'white',
+                boxShadow: isHovered ? '0 2px 4px var(--cert-shadow)' : 'none'
+              }}
+              data-color={theme.primary.split(' ')[0].replace('from-', '')}
+            >
+              {skill}
+            </span>
+          ))}
         </div>
+        
+        {/* Actions row */}
+        <div className="mt-4 flex items-center justify-between">
+          <button 
+            onClick={toggleExpanded}
+            className={`certificate-expand-btn flex items-center text-xs font-medium py-1 px-2.5 rounded-full
+              ${isExpanded ? 'bg-gradient-to-r ' + theme.primary + ' text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'} 
+              transition-all duration-300`}
+          >
+            {isExpanded ? (
+              <>
+                <ChevronUp className="w-3.5 h-3.5 mr-0.5" />
+                Hide details
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-3.5 h-3.5 mr-0.5" />
+                Show details
+              </>
+            )}
+          </button>
+          
+          <a 
+            href={certificate.link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className={`flex items-center text-xs font-medium py-1 px-2.5 rounded-full
+              ${isHovered ? 'bg-gradient-to-r ' + theme.primary + ' text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'} 
+              transition-all duration-300`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Eye className="w-3.5 h-3.5 mr-0.5" />
+            View Certificate
+            <ExternalLink className="w-3 h-3 ml-0.5" />
+          </a>
+        </div>
+        
+        {/* Expandable details section */}
+        <div 
+          ref={expandRef} 
+          className={`overflow-hidden transition-all duration-500 ease-in-out
+            ${theme.bg} rounded-lg mt-4 
+            ${isExpanded ? 'border border-' + theme.primary.split('-')[1] + '-300/30 dark:border-' + theme.primary.split('-')[1] + '-500/30' : ''}`}
+        >
+          {isExpanded && (
+            <div className="p-3.5">
+              <h4 className={`text-xs font-semibold ${theme.icon} mb-2`}>What I learned:</h4>
+              <ul className="space-y-1 list-disc pl-4">
+                {certificate.achievements ? certificate.achievements.map((item, i) => (
+                  <li key={i} className="text-xs text-gray-700 dark:text-gray-300">{item}</li>
+                )) : certificate.skills.map((skill, i) => (
+                  <li key={i} className="text-xs text-gray-700 dark:text-gray-300">
+                    Mastered {skill} fundamentals and practical applications
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const PlaceholderCard = ({ index, isVisible }) => {
+  return (
+    <div 
+      className="certificate-placeholder border border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-4
+        flex flex-col items-center justify-center text-center h-full
+        transition-all duration-500 hover:border-indigo-400 dark:hover:border-indigo-500 group"
+    >
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 
+          dark:from-indigo-500/10 dark:to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      ></div>
+      
+      <div className="p-3 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 
+        mb-3 transform transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110 relative z-10">
+        <Award className="w-6 h-6" />
+      </div>
+      
+      <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-1.5 relative z-10">More achievements coming soon</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-400 relative z-10">
+        Always learning and expanding my skill set
+      </p>
+      
+      {/* Animated particles */}
+      <div className="certificate-placeholder-particles">
+        {[...Array(5)].map((_, i) => (
+          <div 
+            key={i} 
+            className="particle"
+            style={{
+              '--delay': `${i * 0.7}s`,
+              '--size': `${Math.random() * 6 + 3}px`,
+              '--opacity': '0.3'
+            }}
+          ></div>
+        ))}
       </div>
     </div>
   );
@@ -227,7 +262,7 @@ const CertificatesSection = ({ certificates }) => {
         <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
         {certificates.map((certificate, index) => (
           <div 
             key={index} 
@@ -240,7 +275,7 @@ const CertificatesSection = ({ certificates }) => {
           </div>
         ))}
         
-        {/* Add Certificate CTA - This appears when you have space for more */}
+        {/* Add Certificate Placeholder */}
         {certificates.length % 3 !== 0 && (
           <div 
             className="opacity-0 transform translate-y-8"
@@ -248,28 +283,7 @@ const CertificatesSection = ({ certificates }) => {
               animation: isVisible ? `fadeInUp 0.6s ease-out ${certificates.length * 0.2}s forwards` : 'none' 
             }}
           >
-            <div className="certificate-placeholder border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-8 flex flex-col items-center justify-center text-center h-full min-h-[300px] transition-all duration-300 hover:border-indigo-400 dark:hover:border-indigo-500 group">
-              <div className="p-3 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 transform transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-2">More achievements coming soon</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Always learning and expanding my skill set
-              </p>
-              
-              <div className="certificate-placeholder-particles">
-                {[...Array(5)].map((_, i) => (
-                  <div 
-                    key={i} 
-                    className="particle"
-                    style={{
-                      '--delay': `${i * 0.7}s`,
-                      '--size': `${Math.random() * 6 + 3}px`,
-                    }}
-                  ></div>
-                ))}
-              </div>
-            </div>
+            <PlaceholderCard index={certificates.length} isVisible={isVisible} />
           </div>
         )}
       </div>

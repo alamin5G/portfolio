@@ -52,45 +52,85 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+/* Set up theme colors */
+:root {
+  --blue-pulse-color: rgba(59, 130, 246, 0.5);
+  --purple-pulse-color: rgba(147, 51, 234, 0.5);
+  --emerald-pulse-color: rgba(16, 185, 129, 0.5);
+  --amber-pulse-color: rgba(245, 158, 11, 0.5);
+  
+  --cert-bg-start: rgba(79, 70, 229, 0.9);
+  --cert-bg-end: rgba(139, 92, 246, 0.9);
+  --cert-shadow: rgba(79, 70, 229, 0.3);
 }
 
-/* Card flip animations */
-.certificate-card-perspective {
-  perspective: 1000px;
-  height: 100%;
+/* Theme color setups based on data attributes */
+[data-color="blue"] {
+  --cert-bg-start: rgba(59, 130, 246, 0.9);
+  --cert-bg-end: rgba(79, 70, 229, 0.9);
+  --cert-shadow: rgba(59, 130, 246, 0.3);
 }
 
-.certificate-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  min-height: 320px;
+[data-color="purple"] {
+  --cert-bg-start: rgba(147, 51, 234, 0.9);
+  --cert-bg-end: rgba(139, 92, 246, 0.9);
+  --cert-shadow: rgba(147, 51, 234, 0.3);
 }
 
-.certificate-card-inner.is-flipped {
-  transform: rotateY(180deg);
+[data-color="emerald"] {
+  --cert-bg-start: rgba(16, 185, 129, 0.9);
+  --cert-bg-end: rgba(20, 184, 166, 0.9);
+  --cert-shadow: rgba(16, 185, 129, 0.3);
 }
 
-.certificate-card-front,
-.certificate-card-back {
+[data-color="amber"] {
+  --cert-bg-start: rgba(245, 158, 11, 0.9);
+  --cert-bg-end: rgba(234, 88, 12, 0.9);
+  --cert-shadow: rgba(245, 158, 11, 0.3);
+}
+
+/* Certificate icon animation */
+.cert-icon {
+  transition: all 0.3s ease;
+}
+
+.certificate-card:hover .cert-icon {
+  transform: scale(1.1) rotate(12deg);
+}
+
+/* Skill tag animations */
+.skill-tag {
+  transition: all 0.3s ease;
+}
+
+.certificate-card:hover .skill-tag {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--cert-shadow);
+}
+
+/* Placeholder animations */
+.certificate-placeholder-particles {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.certificate-card-back {
-  transform: rotateY(180deg);
+.certificate-placeholder-particles .particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: linear-gradient(to right, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
+  bottom: 20%;
+  left: calc(var(--delay) * 20%);
+  opacity: 0;
+  animation: float 6s infinite ease-in-out var(--delay);
+  pointer-events: none;
+}
+
+.certificate-placeholder:hover .particle {
+  opacity: var(--opacity, 0.3);
 }
 
 /* Animated background */
@@ -106,90 +146,12 @@
   animation-delay: 4s;
 }
 
-/* Skill tag animations */
-.skill-tag {
-  animation: pulse 2s infinite;
-  animation-play-state: paused;
-}
-
-.certificate-card-front:hover .skill-tag {
-  animation-play-state: running;
-}
-
-/* Placeholder animations */
-.certificate-placeholder-particles {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.certificate-placeholder-particles .particle {
-  position: absolute;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: linear-gradient(to right, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
-  bottom: 0;
-  left: calc(var(--delay) * 20%);
-  opacity: 0;
-  animation: float 5s infinite ease-in-out var(--delay);
-}
-
-.certificate-placeholder:hover .certificate-placeholder-particles .particle {
-  opacity: var(--opacity, 0.3);
-}
-
-/* Shimmer effect on hover */
-.certificate-card-front:hover::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-  pointer-events: none;
-  z-index: 2;
-  border-radius: inherit;
-}
-
-.dark .certificate-card-front:hover::after {
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .certificate-card-inner {
-    min-height: 300px;
-  }
-}
-
-/* Prefers reduced motion */
+/* Enhanced accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .certificate-card-inner,
   .animate-blob,
   .skill-tag,
-  .certificate-card-front,
-  .certificate-card-back,
   .certificate-placeholder-particles .particle {
     animation: none !important;
     transition: none !important;
-  }
-  
-  .certificate-card-inner.is-flipped {
-    transform: none !important;
   }
 }
