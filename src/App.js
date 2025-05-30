@@ -24,6 +24,7 @@ import './styles/animations.css'; // Ensure this path is correct
 import './styles/certificates.css';
 import './styles/footer.css'; // Ensure this path is correct
 import './styles/hobbies-animation.css';
+import './styles/project-card.css'; // Ensure this path is correct
 import './styles/strengths.css';
 
 
@@ -621,7 +622,7 @@ const certificates = [
         <section id="certificates" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4">
           <CertificatesSection certificates={certificates} />
         </section>
-              
+
         {/* Strengths Section */}
         <section id="strengths" className="py-16 md:py-24 bg-white dark:bg-gray-900 p-4">
           <StrengthsSection strengths={strengths} />
