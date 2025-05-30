@@ -1,5 +1,4 @@
 import { Award, Brain, Briefcase, Code, Database, GraduationCap, Lightbulb } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import AnimatedName from './components/AnimatedName';
 import ButterflyEffect from './components/ButterflyEffect';
 import ContactForm from './components/ContactForm';
@@ -7,7 +6,6 @@ import EasterEgg from './components/EasterEgg';
 import FloatingIcons from './components/FloatingIcons';
 import InteractiveSkill from './components/InteractiveSkill';
 import MobileMenu from './components/MobileMenu';
-import ParticleBackground from './components/ParticleBackground';
 import ProjectCard from './components/ProjectCard';
 import ScrollingBioSection from './components/ScrollingBioSection';
 import SectionDebugger from './components/SectionDebugger';
@@ -19,25 +17,8 @@ import TypewriterEffect from './components/TypewriterEffect';
 import './styles/animations.css';
 
 
-// Custom Typewriter Effect Component
-const Typewriter = ({ text, delay }) => {
-  const [currentText, setCurrentText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setCurrentText(prevText => prevText + text[currentIndex]);
-        setCurrentIndex(prevIndex => prevIndex + 1);
-      }, delay);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, delay, text]);
-
-  return <span>{currentText}</span>;
-};
-
 const App = () => {
+
 
   const profile = {
     name: "Md. Alamin",
@@ -45,11 +26,11 @@ const App = () => {
     intro: "A passionate Java programmer and aspiring Machine Learning engineer with a strong foundation in software development. I am enthusiastic about creating efficient and scalable backend solutions while exploring the fascinating world of AI and Computer Vision.",
     address: "Dhaka, Bangladesh",
     contact: {
-      email: "alamin@example.com",
-      phone: "+880 123 456 789",
-      whatsapp: "+880 123 456 789",
-      linkedin: "https://linkedin.com/in/mdalamin",
-      github: "https://github.com/mdalamin"
+      email: "alaminvai5g@gmail.com",
+      phone: "+880 1822 679 672",
+      whatsapp: "+880 1822 679 672",
+      linkedin: "https://linkedin.com/in/alamin5g",
+      github: "https://github.com/alamin5g"
     }
   };
 
@@ -334,12 +315,16 @@ const App = () => {
       name: "Dr. Md. Hasibur Rashid Chayon",
       title: "Associate Professor",
       institution: "International University of Business Agriculture and Technology",
+      email: "contactme@foremail.com",
+      phone: "+880 123 456 789"
 
     },
     {
       name: "Rubayea Ferdows",
       title: "Associate Professor",
       institution: "International University of Business Agriculture and Technology",
+      email: "contactme@foremail.com",
+      phone: "+880 123 456 789"
     }
   ];
 
@@ -363,6 +348,7 @@ const scrollToSection = (id) => {
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
   } else {
+    // THIS IS THE IMPORTANT LINE TO CHECK FOR IN YOUR CONSOLE
     console.warn(`Element with ID "${id}" not found in the document.`);
   }
 };
@@ -371,8 +357,7 @@ const scrollToSection = (id) => {
   return (
   <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen relative">
     {/* Particle Background */}
-    <ParticleBackground />
-    <EasterEgg />
+    <EasterEgg />   
     {/* Navigation Header */}
     <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 z-50 p-4">
       <nav className="container mx-auto flex justify-between items-center">
@@ -646,19 +631,19 @@ const scrollToSection = (id) => {
           </div>
         </section>
 
-        {/* Contact & References Section */}
-        <section id="contact" className="py-16 md:py-24 bg-white dark:bg-gray-900 p-4">
-  <div className="container mx-auto max-w-4xl">
-    <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">Contact</h2>
-    
-    <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-      <ContactForm 
-        profile={profile.contact}
-        references={references}
-      />
-    </div>
-  </div>
-</section>
+              <section id="contact" className="py-16 md:py-24 p-4 relative">
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">Contact</h2>
+          
+          <div className="p-6 rounded-lg shadow-xl relative z-10 
+                          bg-white/70 dark:bg-gray-800/70 backdrop-blur-md">
+            <ContactForm 
+              profile={profile.contact}
+              references={references}
+            />
+          </div>
+        </div>
+      </section>
       </main>
 
       {/* Footer */}
@@ -670,6 +655,8 @@ const scrollToSection = (id) => {
       </footer>
 
       <SectionDebugger sections={sections} />
+            
+      
     </div>
   );
 };

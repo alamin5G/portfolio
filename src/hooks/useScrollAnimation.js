@@ -1,4 +1,3 @@
-portfolio/portfolio/src/hooks/useScrollAnimation.js
 import { useEffect, useRef } from 'react';
 
 const useScrollAnimation = (options = {}) => {
