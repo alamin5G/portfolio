@@ -337,3 +337,128 @@
 .hobby-card:hover .hobby-card-content {
   transform: translateY(0);
 }
+
+/* Card flip animation */
+.perspective-500 {
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.hobby-card-wrapper {
+  height: 350px; /* Adjust this value as needed */
+}
+
+.card-inner, .card-front, .card-back, .hobby-card {
+  height: 100%;
+}
+
+/* Improve background contrast in dark mode */
+
+
+/* Ensure text is visible regardless of theme */
+.hobby-card-content {
+  @apply backdrop-blur-sm;
+}
+/* Improve background contrast in dark mode */
+
+
+/* Ensure text is visible regardless of theme */
+.hobby-card-content {
+  @apply backdrop-blur-sm;
+}
+
+/* Dark mode fixes for hobby cards */
+.dark .hobby-card {
+  @apply bg-gray-800; /* Dark background in dark mode */
+}
+
+.dark .hobby-card h3 {
+  @apply text-white; /* White headings in dark mode */
+}
+
+.dark .hobby-card p {
+  @apply text-gray-300; /* Light gray text in dark mode */
+}
+
+/* Ensure front card text is visible in dark mode */
+.dark .card-front .hobby-card h3 {
+  @apply text-white;
+}
+
+.dark .card-front .hobby-card p {
+  @apply text-gray-300;
+}
+
+/* Ensure proper background contrast for content */
+.dark .hobby-card .p-6 {
+  @apply bg-gray-800;
+}
+
+/* Add to your animations.css file */
+
+/* Gradient shadows for hobby cards */
+.gradient-shadow {
+  position: relative;
+}
+
+/* Light mode gradient shadows */
+.gradient-shadow::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #f97316);
+  border-radius: 1rem;
+  z-index: -1;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+/* Shadow becomes more visible on hover */
+.gradient-shadow:hover::before {
+  opacity: 0.7;
+}
+
+/* Dark mode specific gradient shadow */
+.dark .gradient-shadow::before {
+  background: linear-gradient(45deg, #818cf8, #a78bfa, #f472b6, #fb923c);
+  opacity: 0.25;
+}
+
+.dark .gradient-shadow:hover::before {
+  opacity: 0.5;
+}
+
+/* Color-specific gradient shadows (optional) */
+.hobby-card:nth-child(4n+1) .gradient-shadow::before {
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+}
+
+.hobby-card:nth-child(4n+2) .gradient-shadow::before {
+  background: linear-gradient(45deg, #10b981, #14b8a6);
+}
+
+.hobby-card:nth-child(4n+3) .gradient-shadow::before {
+  background: linear-gradient(45deg, #f43f5e, #ec4899);
+}
+
+.hobby-card:nth-child(4n+4) .gradient-shadow::before {
+  background: linear-gradient(45deg, #f59e0b, #f97316);
+}
+

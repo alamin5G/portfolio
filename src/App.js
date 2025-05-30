@@ -14,7 +14,8 @@ import TiltImage from './components/TiltImage';
 import TypewriterEffect from './components/TypewriterEffect';
 
 // Add this import at the top of your App.js
-import './styles/animations.css';
+import './styles/animations.css'; // Ensure this path is correct
+import './styles/hobbies-animation.css';
 
 
 const App = () => {
@@ -39,7 +40,7 @@ const App = () => {
     intro: profile.intro,
     address: profile.address
   };
-  
+
   const statData = [
     {
       icon: (
@@ -72,7 +73,7 @@ const App = () => {
       progress: "60%"
     }
   ];
-  
+
   const skillsData = [
     { name: "Spring Boot", bgColor: "bg-indigo-100 dark:bg-indigo-900/50", textColor: "text-indigo-800 dark:text-indigo-200" },
     { name: "MySQL", bgColor: "bg-blue-100 dark:bg-blue-900/50", textColor: "text-blue-800 dark:text-blue-200" },
@@ -80,7 +81,7 @@ const App = () => {
     { name: "Machine Learning", bgColor: "bg-purple-100 dark:bg-purple-900/50", textColor: "text-purple-800 dark:text-purple-200" },
     { name: "Computer Vision", bgColor: "bg-yellow-100 dark:bg-yellow-900/50", textColor: "text-yellow-800 dark:text-yellow-200" }
   ];
-  
+
   const timelineData = [
     {
       year: "2021-Present",
@@ -101,26 +102,26 @@ const App = () => {
       position: "left"
     }
   ];
-  
-  const roleTitles = [
-  "Passionate Java Programmer & Aspiring ML Engineer",
-  "Java + Spring Boot expertise inside",
-  "Currently diving into Machine Learning & CV",
-  "Scalable backend solutions are my specialty",
-  "Let's build something amazing with Next.js!",
-  "MySQL & PostgreSQL? I've got the queries",
-  "Dockerizing apps for fun and profit",
-  "Clean code & efficient algorithms are my jam",
-  "Leveling up my AI game with PyTorch",
-  "Looking for full-stack opportunities!",
-  "From Java to JavaScript and beyond...",
-  "Building the future, one line of code at a time",
-  "Optimizing performance, one query at a time",
-  "Passionate about open source contributions",
-  "Transforming ideas into scalable solutions"
-];
 
-  
+  const roleTitles = [
+    "Passionate Java Programmer & Aspiring ML Engineer",
+    "Java + Spring Boot expertise inside",
+    "Currently diving into Machine Learning & CV",
+    "Scalable backend solutions are my specialty",
+    "Let's build something amazing with Next.js!",
+    "MySQL & PostgreSQL? I've got the queries",
+    "Dockerizing apps for fun and profit",
+    "Clean code & efficient algorithms are my jam",
+    "Leveling up my AI game with PyTorch",
+    "Looking for full-stack opportunities!",
+    "From Java to JavaScript and beyond...",
+    "Building the future, one line of code at a time",
+    "Optimizing performance, one query at a time",
+    "Passionate about open source contributions",
+    "Transforming ideas into scalable solutions"
+  ];
+
+
 
   const skillLevels = {
     programming: {
@@ -132,7 +133,7 @@ const App = () => {
     frameworks: {
       "Spring Boot": 85,
       "Thymeleaf": 80,
-      "NextJs": 65, 
+      "NextJs": 65,
       "Restful API": 75
     },
     databases: {
@@ -165,76 +166,76 @@ const App = () => {
 
   const projects = [
     {
-  name: "Gold Lab Management System",
-  organization: "International University of Business Agriculture and Technology",
-  duration: "10/2024 - 12/2024",
-  location: "Dhaka, Bangladesh",
-  description: [
-    "Spearheaded the development of the Gold Lab Management System utilizing Java Spring Boot and MySQL database.",
-    "Employed Spring Web MVC, Spring Data JPA, Thymeleaf, Bootstrap, and JavaScript in the system.",
-    "Oversaw the management of Hallmarking, Gold Test vouchers, lab expenses, reports, and client data.",
-    "Implemented the system as a course project with a real-world client focus.",
-    "Tailored software to meet specific client requirements for the previous organization."
-  ],
-  technologies: ["Java", "Spring Boot", "MySQL", "Spring Web MVC", "Spring Data JPA", "Thymeleaf", "Bootstrap", "JavaScript"],
-  githubUrl: "https://github.com/alamin5G/CbtGoldLab",
-  liveUrl: "https://github.com/alamin5G/CbtGoldLab" // Optional - remove if you don't have a live demo
-}, 
-  {
-    name: "Electronic Store E-Commerce Application",
-    organization: "Personal Project",
-    duration: "03/2025 - 05/2025",
-    technologies: [
-      "Java 17+", "Spring Boot 3+", "Spring MVC", "Spring Data JPA", "Spring Security",
-      "Thymeleaf", "Bootstrap 5", "MySQL", "Lombok", "ModelMapper", "Maven"
-    ],
-    description: [
-      "An advanced Spring Boot e-commerce platform for electronics retail, featuring a complete shopping experience for customers and a robust admin management system.",
-      "Customer Features: Secure authentication, product browsing, shopping cart, multi-step checkout, order management, user profile.",
-      "Admin Features: Dashboard, product/category/brand management, order management, user management, contact message management.",
-      "Tech Stack: Java 17+, Spring Boot 3+, Spring MVC, Spring Data JPA, Spring Security, Jakarta Validation, Thymeleaf, Bootstrap 5, MySQL, Lombok, ModelMapper, Maven."
-    ],
-    stack: [
-      "Backend: Java 17+, Spring Boot 3+, Spring MVC, Spring Data JPA, Spring Security, Jakarta Validation",
-      "Frontend: Thymeleaf, Bootstrap 5, HTML5, CSS3, JavaScript",
-      "Database: MySQL",
-      "Tools: Lombok, ModelMapper, Maven"
-    ],
-    githubUrl: "https://github.com/alamin5g/ElectronicStore",
-    liveUrl: "https://github.com/alamin5g/ElectronicStore"
-  }, 
+      name: "Gold Lab Management System",
+      organization: "International University of Business Agriculture and Technology",
+      duration: "10/2024 - 12/2024",
+      location: "Dhaka, Bangladesh",
+      description: [
+        "Spearheaded the development of the Gold Lab Management System utilizing Java Spring Boot and MySQL database.",
+        "Employed Spring Web MVC, Spring Data JPA, Thymeleaf, Bootstrap, and JavaScript in the system.",
+        "Oversaw the management of Hallmarking, Gold Test vouchers, lab expenses, reports, and client data.",
+        "Implemented the system as a course project with a real-world client focus.",
+        "Tailored software to meet specific client requirements for the previous organization."
+      ],
+      technologies: ["Java", "Spring Boot", "MySQL", "Spring Web MVC", "Spring Data JPA", "Thymeleaf", "Bootstrap", "JavaScript"],
+      githubUrl: "https://github.com/alamin5G/CbtGoldLab",
+      liveUrl: "https://github.com/alamin5G/CbtGoldLab" // Optional - remove if you don't have a live demo
+    },
     {
-    name: "Equal Bangladesh",
-    organization: "Personal Project for Social Impact",
-    duration: "07/2024 - 09/2024",
-    location: "Dhaka, Bangladesh",
-    description: [
-      "Developed a Spring Boot platform to collect, document, and preserve information about victims of state-led violence during the 2024 Movement in Bangladesh.",
-      "Implemented JWT-based authentication system with role-based access control for enhanced security.",
-      "Created three specialized forms for reporting victims (Death, Missing, Injured) with email OTP verification.",
-      "Built a comprehensive admin dashboard with case management, statistical reporting, and data export features.",
-      "Incorporated audit logging to track all system activities and database backup/restoration tools."
-    ],
-    technologies: [
-      "Java 17+", "Spring Boot", "Spring Security", "JWT Authentication", 
-      "Thymeleaf", "MySQL", "JFreeChart", "Maven", "Docker"
-    ],
-    features: [
-      "User Authentication with JWT",
-      "Email OTP Verification",
-      "Multi-form Case Submission",
-      "Admin Dashboard & Case Management",
-      "Statistical Reporting & Data Export",
-      "Database Backup & Restoration",
-      "Audit Logging System"
-    ],
-    impact: "Created a digital record of historical events, preserving crucial information and helping citizens share stories of those affected by oppression.",
-    githubUrl: "https://github.com/alamin5G/EqualBangla",
-    liveUrl: "https://github.com/alamin5G/EqualBangla" // Add if deployed
-  }
-];
+      name: "Electronic Store E-Commerce Application",
+      organization: "Personal Project",
+      duration: "03/2025 - 05/2025",
+      technologies: [
+        "Java 17+", "Spring Boot 3+", "Spring MVC", "Spring Data JPA", "Spring Security",
+        "Thymeleaf", "Bootstrap 5", "MySQL", "Lombok", "ModelMapper", "Maven"
+      ],
+      description: [
+        "An advanced Spring Boot e-commerce platform for electronics retail, featuring a complete shopping experience for customers and a robust admin management system.",
+        "Customer Features: Secure authentication, product browsing, shopping cart, multi-step checkout, order management, user profile.",
+        "Admin Features: Dashboard, product/category/brand management, order management, user management, contact message management.",
+        "Tech Stack: Java 17+, Spring Boot 3+, Spring MVC, Spring Data JPA, Spring Security, Jakarta Validation, Thymeleaf, Bootstrap 5, MySQL, Lombok, ModelMapper, Maven."
+      ],
+      stack: [
+        "Backend: Java 17+, Spring Boot 3+, Spring MVC, Spring Data JPA, Spring Security, Jakarta Validation",
+        "Frontend: Thymeleaf, Bootstrap 5, HTML5, CSS3, JavaScript",
+        "Database: MySQL",
+        "Tools: Lombok, ModelMapper, Maven"
+      ],
+      githubUrl: "https://github.com/alamin5g/ElectronicStore",
+      liveUrl: "https://github.com/alamin5g/ElectronicStore"
+    },
+    {
+      name: "Equal Bangladesh",
+      organization: "Personal Project for Social Impact",
+      duration: "07/2024 - 09/2024",
+      location: "Dhaka, Bangladesh",
+      description: [
+        "Developed a Spring Boot platform to collect, document, and preserve information about victims of state-led violence during the 2024 Movement in Bangladesh.",
+        "Implemented JWT-based authentication system with role-based access control for enhanced security.",
+        "Created three specialized forms for reporting victims (Death, Missing, Injured) with email OTP verification.",
+        "Built a comprehensive admin dashboard with case management, statistical reporting, and data export features.",
+        "Incorporated audit logging to track all system activities and database backup/restoration tools."
+      ],
+      technologies: [
+        "Java 17+", "Spring Boot", "Spring Security", "JWT Authentication",
+        "Thymeleaf", "MySQL", "JFreeChart", "Maven", "Docker"
+      ],
+      features: [
+        "User Authentication with JWT",
+        "Email OTP Verification",
+        "Multi-form Case Submission",
+        "Admin Dashboard & Case Management",
+        "Statistical Reporting & Data Export",
+        "Database Backup & Restoration",
+        "Audit Logging System"
+      ],
+      impact: "Created a digital record of historical events, preserving crucial information and helping citizens share stories of those affected by oppression.",
+      githubUrl: "https://github.com/alamin5G/EqualBangla",
+      liveUrl: "https://github.com/alamin5G/EqualBangla" // Add if deployed
+    }
+  ];
 
-  
+
 
   const education = [
     {
@@ -282,44 +283,56 @@ const App = () => {
     "Team Collaboration", "Problem-Solving", "Communication Skill", "Commitment to Quality within Deadline"
   ];
 
-    // Update your hobbies array with more detailed information:
-  
+  // Update your hobbies array with more detailed information:
+
+
   const hobbies = [
-    { 
-      name: "Exploring distant community", 
+    {
+      name: "Exploring distant communities",
       description: "Traveling to remote areas to connect with different cultures and understand diverse perspectives.",
+      extendedDescription: "I enjoy traveling to less-explored regions of Bangladesh to learn about local cultures, traditions, and ways of life. These experiences help me understand the diversity of human experiences and bring fresh insights to my work as a developer.",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7h-9m9 0H3"></path>
+          <path d="M13 15l2 6h1l2-6M8 15l2 6h1l2-6"></path>
+          <path d="M2 12h20"></path>
         </svg>
-      ) 
+      )
     },
-    { 
-      name: "Getting lost in a good book", 
+    {
+      name: "Getting lost in books",
       description: "Reading novels and non-fiction books that expand my knowledge and fuel my imagination.",
+      extendedDescription: "From technical books on programming to novels that transport me to different worlds, reading is my way of continuous learning. I especially enjoy books on technology trends, AI advancements, and software architecture that help me grow professionally.",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 17H7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v13c0 .55-.45 1-1 1z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
         </svg>
-      ) 
+      )
     },
-    { 
-      name: "Capturing nature", 
+    {
+      name: "Capturing nature",
       description: "Photography that showcases the beauty of landscapes and everyday moments around Bangladesh.",
+      extendedDescription: "I find joy in capturing the natural beauty and daily life in Bangladesh through my camera. From the vibrant colors of rural landscapes to the bustling city streets, photography lets me document moments that might otherwise go unnoticed.",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
         </svg>
-      ) 
+      )
     },
-    { 
-      name: "Aid and support", 
-      description: "Volunteering with local organizations to support community development and education initiatives.",
+    {
+      name: "Personal mentoring",
+      description: "Helping individuals develop their technical skills through one-on-one guidance and support.",
+      extendedDescription: "Rather than formal volunteering, I prefer to directly mentor and support individuals who are starting their journey in programming. I enjoy sharing knowledge, reviewing code, and providing guidance that helps others grow in their technical careers.",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
         </svg>
-      ) 
+      )
     }
   ];
 
@@ -355,179 +368,179 @@ const App = () => {
   ];
 
   // Smooth scrolling
-// Update your scrollToSection function with this improved version
-const scrollToSection = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    // THIS IS THE IMPORTANT LINE TO CHECK FOR IN YOUR CONSOLE
-    console.warn(`Element with ID "${id}" not found in the document.`);
-  }
-};
-    
+  // Update your scrollToSection function with this improved version
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // THIS IS THE IMPORTANT LINE TO CHECK FOR IN YOUR CONSOLE
+      console.warn(`Element with ID "${id}" not found in the document.`);
+    }
+  };
+
 
   return (
-  <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen relative">
-   
-    {/* Navigation Header */}
-    <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 z-50 p-4">
-      <nav className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold text-indigo-700 dark:text-indigo-400">Md. Alamin</div>
-        <div className="flex items-center space-x-4">
-          <ThemeToggle />
-          <ul className="hidden md:flex space-x-6">
-            {sections.map(section => (
-              <li key={section.id}>
-                <button
-                  onClick={() => scrollToSection(section.id)}
-                  className="text-gray-600 dark:text-gray-300 hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/30 fancy-underline"
-                >
-                  {section.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-          {/* Mobile Menu */}
-          <MobileMenu sections={sections} scrollToSection={scrollToSection} />
-        </div>
-      </nav>
-    </header>
+    <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen relative">
+
+      {/* Navigation Header */}
+      <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 z-50 p-4">
+        <nav className="container mx-auto flex justify-between items-center">
+          <div className="text-2xl font-bold text-indigo-700 dark:text-indigo-400">Md. Alamin</div>
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            <ul className="hidden md:flex space-x-6">
+              {sections.map(section => (
+                <li key={section.id}>
+                  <button
+                    onClick={() => scrollToSection(section.id)}
+                    className="text-gray-600 dark:text-gray-300 hover:text-indigo-700 dark:hover:text-indigo-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/30 fancy-underline"
+                  >
+                    {section.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {/* Mobile Menu */}
+            <MobileMenu sections={sections} scrollToSection={scrollToSection} />
+          </div>
+        </nav>
+      </header>
 
       <main className="pt-20"> {/* Padding for fixed header */}
         {/* Home Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center text-center bg-gradient-animated text-white p-4">
-              <ButterflyEffect />
+        <section id="home" className="relative h-screen flex items-center justify-center text-center bg-gradient-animated text-white p-4">
+          <ButterflyEffect />
 
-         <FloatingIcons />
-  <div className="container mx-auto max-w-4xl">
-    <div className="mb-6">
-      <TiltImage
-        src={profile.image}
-        alt={profile.name}
-      />
-    </div>
-    <h1 className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-      Hi, I'm <AnimatedName name={profile.name} />
-    </h1>
-    <p className="text-2xl md:text-3xl font-light mb-8">
-  <TypewriterEffect 
-    text={roleTitles} 
-    typingSpeed={70} 
-    pauseTime={2000} 
-  />
-</p>
-    
-    <div className="mt-10 space-y-4">
-      <button 
-        onClick={() => scrollToSection('projects')}
-        className="px-8 py-3 bg-white text-indigo-600 font-bold rounded-full hover:bg-indigo-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg mx-2"
-      >
-        View My Work
-      </button>
-      
-      <button 
-        onClick={() => scrollToSection('contact')}
-        className="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-indigo-600 transition-all duration-300 transform hover:-translate-y-1 mx-2"
-      >
-        Contact Me
-      </button>
-    </div>
-    
-    <div className="flex justify-center space-x-6 mt-8">
-      {/* Your social links (same as before) */}
-    </div>
-  </div>
-  
-  <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-    <button 
-      onClick={() => scrollToSection('about')}
-      className="text-white opacity-75 hover:opacity-100 transition-opacity"
-      aria-label="Scroll down"
-    >
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    </button>
-  </div>
-</section>
-            
+          <FloatingIcons />
+          <div className="container mx-auto max-w-4xl">
+            <div className="mb-6">
+              <TiltImage
+                src={profile.image}
+                alt={profile.name}
+              />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+              Hi, I'm <AnimatedName name={profile.name} />
+            </h1>
+            <p className="text-2xl md:text-3xl font-light mb-8">
+              <TypewriterEffect
+                text={roleTitles}
+                typingSpeed={70}
+                pauseTime={2000}
+              />
+            </p>
 
-                {/* About Section */}
-        
-         <section id="about" className="py-16 md:py-24 bg-white dark:bg-gray-900 p-4 relative overflow-hidden">
-            <ScrollingBioSection 
-        bio={bioData}
-        stats={statData}
-        skills={skillsData}
-        timeline={timelineData}
-      />
-          </section>
+            <div className="mt-10 space-y-4">
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="px-8 py-3 bg-white text-indigo-600 font-bold rounded-full hover:bg-indigo-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg mx-2"
+              >
+                View My Work
+              </button>
 
-      
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-indigo-600 transition-all duration-300 transform hover:-translate-y-1 mx-2"
+              >
+                Contact Me
+              </button>
+            </div>
+
+            <div className="flex justify-center space-x-6 mt-8">
+              {/* Your social links (same as before) */}
+            </div>
+          </div>
+
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-white opacity-75 hover:opacity-100 transition-opacity"
+              aria-label="Scroll down"
+            >
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </button>
+          </div>
+        </section>
+
+
+        {/* About Section */}
+
+        <section id="about" className="py-16 md:py-24 bg-white dark:bg-gray-900 p-4 relative overflow-hidden">
+          <ScrollingBioSection
+            bio={bioData}
+            stats={statData}
+            skills={skillsData}
+            timeline={timelineData}
+          />
+        </section>
+
+
 
         {/* Update the Skills section to use Interactive Skills */}
-              
-          
-              {/* --- My Skills Section (Interactive Only) --- */}
-              <section id="skills" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative z-10">
-                <div className="container mx-auto max-w-4xl relative">
-                  <div className="bubble absolute -top-10 -left-10 w-20 h-20 bg-indigo-500/10 rounded-full"></div>
-                  <div className="bubble absolute top-1/2 -right-10 w-32 h-32 bg-purple-500/10 rounded-full" style={{animationDelay: "2s"}}></div>
-                  
-                  <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Skills</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Programming Skills */}
-                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
-                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
-                        <Code className="w-6 h-6 mr-2" />
-                        Programming Skills
-                      </h3>
-                      <div className="space-y-4">
-                        {skillLevels.programming && Object.entries(skillLevels.programming).map(([skill, level], idx) => (
-                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Code} color="indigo" />
-                        ))}
-                      </div>
-                    </div>
-                    {/* Frameworks Skills */}
-                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
-                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
-                        <Lightbulb className="w-6 h-6 mr-2" />
-                        Frameworks Skills
-                      </h3>
-                      <div className="space-y-4">
-                        {skillLevels.frameworks && Object.entries(skillLevels.frameworks).map(([skill, level], idx) => (
-                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Lightbulb} color="purple" />
-                        ))}
-                      </div>
-                    </div>
-                    {/* Databases Skills */}
-                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
-                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
-                        <Database className="w-6 h-6 mr-2" />
-                        Database Skills
-                      </h3>
-                      <div className="space-y-4">
-                        {skillLevels.databases && Object.entries(skillLevels.databases).map(([skill, level], idx) => (
-                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Database} color="blue" />
-                        ))}
-                      </div>
-                    </div>
-                    {/* AI/ML Skills */}
-                    <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
-                      <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
-                        <Brain className="w-6 h-6 mr-2" />
-                        AI/ML Skills
-                      </h3>
-                      <div className="space-y-4">
-                        {skillLevels.ai_ml && Object.entries(skillLevels.ai_ml).map(([skill, level], idx) => (
-                          <InteractiveSkill key={idx} skill={skill} level={level} icon={Brain} color="teal" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+
+
+        {/* --- My Skills Section (Interactive Only) --- */}
+        <section id="skills" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative z-10">
+          <div className="container mx-auto max-w-4xl relative">
+            <div className="bubble absolute -top-10 -left-10 w-20 h-20 bg-indigo-500/10 rounded-full"></div>
+            <div className="bubble absolute top-1/2 -right-10 w-32 h-32 bg-purple-500/10 rounded-full" style={{ animationDelay: "2s" }}></div>
+
+            <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Skills</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Programming Skills */}
+              <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                  <Code className="w-6 h-6 mr-2" />
+                  Programming Skills
+                </h3>
+                <div className="space-y-4">
+                  {skillLevels.programming && Object.entries(skillLevels.programming).map(([skill, level], idx) => (
+                    <InteractiveSkill key={idx} skill={skill} level={level} icon={Code} color="indigo" />
+                  ))}
                 </div>
-              </section>
+              </div>
+              {/* Frameworks Skills */}
+              <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                  <Lightbulb className="w-6 h-6 mr-2" />
+                  Frameworks Skills
+                </h3>
+                <div className="space-y-4">
+                  {skillLevels.frameworks && Object.entries(skillLevels.frameworks).map(([skill, level], idx) => (
+                    <InteractiveSkill key={idx} skill={skill} level={level} icon={Lightbulb} color="purple" />
+                  ))}
+                </div>
+              </div>
+              {/* Databases Skills */}
+              <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                  <Database className="w-6 h-6 mr-2" />
+                  Database Skills
+                </h3>
+                <div className="space-y-4">
+                  {skillLevels.databases && Object.entries(skillLevels.databases).map(([skill, level], idx) => (
+                    <InteractiveSkill key={idx} skill={skill} level={level} icon={Database} color="blue" />
+                  ))}
+                </div>
+              </div>
+              {/* AI/ML Skills */}
+              <div className="bg-white dark:bg-gray-850 p-6 rounded-lg shadow-lg hover-lift transition-all duration-300">
+                <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4 capitalize flex items-center">
+                  <Brain className="w-6 h-6 mr-2" />
+                  AI/ML Skills
+                </h3>
+                <div className="space-y-4">
+                  {skillLevels.ai_ml && Object.entries(skillLevels.ai_ml).map(([skill, level], idx) => (
+                    <InteractiveSkill key={idx} skill={skill} level={level} icon={Brain} color="teal" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Experience Section */}
         <section id="experience" className="py-16 md:py-24 bg-white p-4">
@@ -552,18 +565,18 @@ const scrollToSection = (id) => {
           </div>
         </section>
 
-        
-              {/* Update Projects section to use ProjectCards */}
-    <section id="projects" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4">
-  <div className="container mx-auto max-w-4xl">
-    <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Projects</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} project={project} />
-      ))}
-    </div>
-  </div>
-</section>
+
+        {/* Update Projects section to use ProjectCards */}
+        <section id="projects" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">My Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {projects.map((project, index) => (
+                <ProjectCard key={index} project={project} />
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Education Section */}
         <section id="education" className="py-16 md:py-24 bg-white p-4">
@@ -627,142 +640,195 @@ const scrollToSection = (id) => {
         </section>
 
         {/* Hobbies Section */}
-       
-      
-            <section id="hobbies" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative overflow-hidden">
-        {/* Interactive background shapes */}
-        <div className="absolute top-0 left-0 w-40 h-40 bg-indigo-300/10 dark:bg-indigo-500/20 rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
-        <div className="absolute top-1/4 right-1/5 w-24 h-24 bg-purple-300/10 dark:bg-purple-500/20 rounded-full translate-y-1/4 animate-float" style={{animationDelay: "1.5s"}}></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-300/10 dark:bg-pink-500/20 rounded-full translate-x-1/4 translate-y-1/4 animate-pulse" style={{animationDelay: "2s"}}></div>
-        
-        <div className="container mx-auto max-w-5xl relative z-10">
-          <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6">
-            My <AnimatedName name="Hobbies" />
-          </h2>
-          <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-16 max-w-xl mx-auto">
-            When I'm not coding, you'll find me enjoying these activities that help me stay creative, balanced, and inspired.
-          </p>
-          
-          {/* Staggered card layout to prevent overlap */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-            {hobbies.map((hobby, index) => (
-              <div key={index} className="hobby-card-wrapper relative"
-                   style={{ marginTop: index % 2 === 1 ? '2rem' : '0' }}>
-                <div className="hobby-card bg-white dark:bg-gray-750 rounded-xl shadow-xl overflow-hidden
-                               group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                  {/* Gradient header with animated icon */}
-                  <div className={`h-28 flex items-center justify-center bg-gradient-to-r 
-                    ${index % 4 === 0 ? 'from-indigo-500 to-purple-600' : ''}
-                    ${index % 4 === 1 ? 'from-green-500 to-teal-600' : ''}
-                    ${index % 4 === 2 ? 'from-rose-500 to-pink-600' : ''}
-                    ${index % 4 === 3 ? 'from-amber-500 to-orange-600' : ''}
-                    overflow-hidden relative
-                  `}>
-                    {/* Animated decorative elements */}
-                    <div className="absolute top-0 left-0 w-full h-full opacity-20">
-                      <div className="absolute top-1/4 left-1/4 w-12 h-12 rounded-full bg-white/30 transform scale-0 group-hover:scale-100 transition-transform duration-700 delay-100"></div>
-                      <div className="absolute bottom-1/4 right-1/4 w-8 h-8 rounded-full bg-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-700 delay-200"></div>
+
+
+        <section id="hobbies" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative overflow-hidden">
+          {/* Interactive background shapes */}
+          <div className="absolute top-0 left-0 w-40 h-40 bg-indigo-300/10 dark:bg-indigo-500/20 rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+          <div className="absolute top-1/4 right-1/5 w-24 h-24 bg-purple-300/10 dark:bg-purple-500/20 rounded-full translate-y-1/4 animate-float" style={{ animationDelay: "1.5s" }}></div>
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-300/10 dark:bg-pink-500/20 rounded-full translate-x-1/4 translate-y-1/4 animate-pulse" style={{ animationDelay: "2s" }}></div>
+
+          <div className="container mx-auto max-w-5xl relative z-10">
+            <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6">
+              My <AnimatedName name="Hobbies" />
+            </h2>
+            <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-16 max-w-xl mx-auto">
+              <TypewriterEffect
+                text={[
+                  "When I'm not coding, you'll find me enjoying these activities that help me stay creative.",
+                  "These hobbies keep me balanced and bring fresh perspectives to my work.",
+                  "Exploring different interests helps me think outside the box and solve problems creatively.",
+                  "Finding time for these activities keeps me inspired and energized.",
+                ]}
+                typingSpeed={70}
+                pauseTime={3000}
+              />
+            </p>
+
+            {/* Staggered card layout to prevent overlap */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 md:gap-6">
+              {hobbies.map((hobby, index) => (
+                <div key={index} className="perspective-500 hobby-card-wrapper relative"
+                  style={{ marginTop: index % 2 === 1 ? '2rem' : '0' }}>
+                  <div className="card-inner relative w-full h-full transition-transform duration-1000"
+                    id={`card-inner-${index}`}>
+
+                    {/* Front of card */}
+                    <div className="card-front absolute w-full h-full backface-hidden">
+  <div className="hobby-card bg-white dark:bg-gray-800 rounded-xl h-full
+           group transition-all duration-500 transform hover:-translate-y-2">{/* Header with gradient remains the same */}
+                        <div className={`h-28 flex items-center justify-center bg-gradient-to-r 
+                          ${index % 4 === 0 ? 'from-indigo-500 to-purple-600' : ''}
+                          ${index % 4 === 1 ? 'from-green-500 to-teal-600' : ''}
+                          ${index % 4 === 2 ? 'from-rose-500 to-pink-600' : ''}
+                          ${index % 4 === 3 ? 'from-amber-500 to-orange-600' : ''}
+                          overflow-hidden relative`}>
+
+                          {/* Animated decorative elements */}
+                          <div className="absolute top-0 left-0 w-full h-full opacity-20">
+                            <div className="absolute top-1/4 left-1/4 w-12 h-12 rounded-full bg-white/30 transform scale-0 group-hover:scale-100 transition-transform duration-700 delay-100"></div>
+                            <div className="absolute bottom-1/4 right-1/4 w-8 h-8 rounded-full bg-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-700 delay-200"></div>
+                          </div>
+
+                          {/* Updated icons */}
+                          <div className="text-white transform group-hover:scale-125 group-hover:rotate-3 transition-all duration-500">
+                            {hobby.icon}
+                          </div>
+                        </div>
+
+                        {/* Card body with animated content reveal */}
+                        <div className="p-6 text-center flex flex-col h-[calc(100%-7rem)] bg-white dark:bg-gray-800">
+
+                          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+                            {hobby.name}
+                          </h3>
+                          <div className="flex-grow overflow-hidden mb-4">
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">
+                              {hobby.description}
+                            </p>
+                          </div>
+
+                          {/* Interactive button that appears on hover */}
+                          <div className="mt-auto opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                            <button
+                              onClick={() => {
+                                document.getElementById(`card-inner-${index}`).style.transform = 'rotateY(180deg)';
+                              }}
+                              className={`text-xs font-medium py-1 px-4 rounded-full
+                              ${index % 4 === 0 ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200' : ''}
+                              ${index % 4 === 1 ? 'bg-green-100 text-green-700 hover:bg-green-200' : ''}
+                              ${index % 4 === 2 ? 'bg-rose-100 text-rose-700 hover:bg-rose-200' : ''}
+                              ${index % 4 === 3 ? 'bg-amber-100 text-amber-700 hover:bg-amber-200' : ''}
+                            `}
+                            >
+                              Learn more
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    
-                    {/* Icon with interactive animation */}
-                    <div className="text-white transform group-hover:scale-125 group-hover:rotate-3 transition-all duration-500">
-                      {hobby.icon}
+
+                    {/* Back of card */}
+                   <div className="card-back absolute w-full h-full backface-hidden rotate-y-180">
+  <div className="hobby-card bg-white dark:bg-gray-750 rounded-xl h-full
+           flex flex-col p-6">
+  
+                        <h3 className={`text-xl font-semibold mb-4 ${index % 4 === 0 ? 'text-indigo-700 dark:text-indigo-400' :
+                            index % 4 === 1 ? 'text-green-700 dark:text-green-400' :
+                              index % 4 === 2 ? 'text-rose-700 dark:text-rose-400' :
+                                'text-amber-700 dark:text-amber-400'
+                          }`}>
+                          About {hobby.name}
+                        </h3>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm flex-grow overflow-y-auto">
+                          {hobby.extendedDescription || `${hobby.description} This is something I truly enjoy in my spare time and helps me maintain balance in life.`}
+                        </p>
+                        <button
+      onClick={() => {
+        const card = document.getElementById(`card-inner-${index}`);
+        if (card) card.style.transform = 'rotateY(0deg)';
+      }}
+      className={`mt-4 text-xs font-medium py-1 px-4 rounded-full self-center
+      ${index % 4 === 0 ? 'bg-indigo-200 text-indigo-800 hover:bg-indigo-300' : ''}
+      ${index % 4 === 1 ? 'bg-green-200 text-green-800 hover:bg-green-300' : ''}
+      ${index % 4 === 2 ? 'bg-rose-200 text-rose-800 hover:bg-rose-300' : ''}
+      ${index % 4 === 3 ? 'bg-amber-200 text-amber-800 hover:bg-amber-300' : ''}
+    `}
+    >
+                          Back
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Card body with animated content reveal */}
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-                      {hobby.name}
-                    </h3>
-                    <div className="h-24 overflow-hidden">
-                      <p className="text-gray-600 dark:text-gray-300 text-sm transform translate-y-0 group-hover:translate-y-0 transition-transform duration-500">
-                        {hobby.description || `I enjoy ${hobby.name.toLowerCase()} in my free time.`}
-                      </p>
-                    </div>
-                    
-                    {/* Interactive button that appears on hover */}
-                    <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      <button className={`text-xs font-medium py-1 px-4 rounded-full
-                        ${index % 4 === 0 ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200' : ''}
-                        ${index % 4 === 1 ? 'bg-green-100 text-green-700 hover:bg-green-200' : ''}
-                        ${index % 4 === 2 ? 'bg-rose-100 text-rose-700 hover:bg-rose-200' : ''}
-                        ${index % 4 === 3 ? 'bg-amber-100 text-amber-700 hover:bg-amber-200' : ''}
-                      `}>
-                        Learn more
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Decorative shape behind card only visible on hover */}
-                <div className={`absolute -z-10 inset-0 -m-3 rounded-xl transform scale-90 opacity-0 group-hover:opacity-50 group-hover:scale-105 transition-all duration-500
+
+                  {/* Decorative shape behind card only visible on hover */}
+                  <div className={`absolute -z-10 inset-0 -m-3 rounded-xl transform scale-90 opacity-0 group-hover:opacity-50 group-hover:scale-105 transition-all duration-500
                   ${index % 4 === 0 ? 'bg-indigo-200/30 dark:bg-indigo-900/30' : ''}
                   ${index % 4 === 1 ? 'bg-green-200/30 dark:bg-green-900/30' : ''}
                   ${index % 4 === 2 ? 'bg-rose-200/30 dark:bg-rose-900/30' : ''}
                   ${index % 4 === 3 ? 'bg-amber-200/30 dark:bg-amber-900/30' : ''}
                 `}></div>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
 
         {/* Contact Section */}
-   <section id="contact" className="relative py-16 md:py-24 bg-gradient-animated text-white p-4 min-h-[80vh] flex items-center">
-  <ButterflyEffect />
-  <ContactFloatingElements />
-  
-  <div className="container mx-auto max-w-4xl relative z-10">
-    <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6">
-      Let's <AnimatedName name="Connect" />
-    </h1>
-    <p className="text-xl md:text-2xl font-light mb-10 text-center">
-      <TypewriterEffect 
-        text={[
-          "Have a project in mind? Let's discuss it!",
-          "Looking for a skilled developer for your team?",
-          "Need help with your Java or Spring Boot project?",
-          "Want to know more about my experience?",
-          "Ready to collaborate on something awesome?"
-        ]} 
-        typingSpeed={60} 
-        pauseTime={2000} 
-      />
-    </p>
-    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8 transform transition-all duration-300 hover:scale-[1.01]">
-      <ContactForm 
-        profile={profile.contact}
-        references={references}
-      />
-    </div>
-    
-    
-  </div>
-  <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
-      <button 
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="text-white opacity-70 hover:opacity-100 transition-opacity"
-        aria-label="Scroll to top"
-      >
-        <svg className="w-10 h-10 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </button>
-    </div>
-</section>
+        <section id="contact" className="relative py-16 md:py-24 bg-gradient-animated text-white p-4 min-h-[80vh] flex items-center">
+          <ButterflyEffect />
+          <ContactFloatingElements />
+
+          <div className="container mx-auto max-w-4xl relative z-10">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6">
+              Let's <AnimatedName name="Connect" />
+            </h1>
+            <p className="text-xl md:text-2xl font-light mb-10 text-center">
+              <TypewriterEffect
+                text={[
+                  "Have a project in mind? Let's discuss it!",
+                  "Looking for a skilled developer for your team?",
+                  "Need help with your Java or Spring Boot project?",
+                  "Want to know more about my experience?",
+                  "Ready to collaborate on something awesome?"
+                ]}
+                typingSpeed={60}
+                pauseTime={2000}
+              />
+            </p>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8 transform transition-all duration-300 hover:scale-[1.01]">
+              <ContactForm
+                profile={profile.contact}
+                references={references}
+              />
+            </div>
+
+
+          </div>
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="text-white opacity-70 hover:opacity-100 transition-opacity"
+              aria-label="Scroll to top"
+            >
+              <svg className="w-10 h-10 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </button>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white text-center p-6 mt-12">
         <div className="container mx-auto">
           <p>&copy; {new Date().getFullYear()} alamin5g. All rights reserved.</p>
-          </div>
+        </div>
       </footer>
 
       <SectionDebugger sections={sections} />
-            
+
     </div>
   );
 };
