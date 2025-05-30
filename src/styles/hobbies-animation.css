@@ -36,76 +36,16 @@
 }
 
 .dark .card-back .hobby-card {
-  background-color: #1f2937 !important; /* dark:bg-gray-800 */
+  background-color: #374151 !important; /* dark:bg-gray-700 - lighter for better contrast */
 }
 
-/* Card border animations */
-.hobby-card {
-  position: relative;
-  border-radius: inherit;
-  overflow: hidden;
+/* Better text visibility in dark mode */
+.dark .card-back h3 {
+  color: rgb(129, 140, 248) !important; /* indigo-400 */
 }
 
-.hobby-card::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(90deg, 
-    rgba(99,102,241,0.8) 0%, 
-    rgba(139,92,246,0.8) 25%, 
-    rgba(236,72,153,0.8) 50%, 
-    rgba(249,115,22,0.8) 75%, 
-    rgba(99,102,241,0.8) 100%);
-  border-radius: 0.75rem;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  animation: gradientMove 3s linear infinite;
-}
-
-.hobby-card:hover::before {
-  opacity: 1;
-}
-
-/* Customize gradient colors based on card index */
-.hobby-card-wrapper:nth-child(4n+1) .hobby-card::before {
-  background: linear-gradient(90deg, 
-    rgba(99,102,241,0.8) 0%, 
-    rgba(139,92,246,0.8) 50%, 
-    rgba(99,102,241,0.8) 100%);
-}
-
-.hobby-card-wrapper:nth-child(4n+2) .hobby-card::before {
-  background: linear-gradient(90deg, 
-    rgba(16,185,129,0.8) 0%, 
-    rgba(20,184,166,0.8) 50%, 
-    rgba(16,185,129,0.8) 100%);
-}
-
-.hobby-card-wrapper:nth-child(4n+3) .hobby-card::before {
-  background: linear-gradient(90deg, 
-    rgba(244,63,94,0.8) 0%, 
-    rgba(236,72,153,0.8) 50%, 
-    rgba(244,63,94,0.8) 100%);
-}
-
-.hobby-card-wrapper:nth-child(4n+4) .hobby-card::before {
-  background: linear-gradient(90deg, 
-    rgba(245,158,11,0.8) 0%, 
-    rgba(249,115,22,0.8) 50%, 
-    rgba(245,158,11,0.8) 100%);
-}
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
+.dark .card-back p {
+  color: rgb(229, 231, 235) !important; /* gray-200 */
 }
 
 /* Fixed card height to avoid sizing issues */
@@ -115,4 +55,96 @@
 
 .hobby-card, .card-front, .card-back {
   height: 100%;
+}
+
+/* Gradient Border Animation - Works for both front and back cards */
+.hobby-card {
+  position: relative;
+  border-radius: 0.75rem;
+}
+
+/* Common gradient border for all cards */
+.hobby-card::before {
+  content: '';
+  position: absolute;
+  inset: -3px; /* Creates border around the card */
+  border-radius: 0.75rem;
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: borderGradient 3s linear infinite;
+}
+
+/* Make gradient visible on hover */
+.hobby-card:hover::before {
+  opacity: 1;
+}
+
+/* Specific gradients based on card index */
+.hobby-card-wrapper:nth-child(4n+1) .card-front .hobby-card::before,
+.hobby-card-wrapper:nth-child(4n+1) .card-back .hobby-card::before {
+  background: linear-gradient(45deg, 
+    rgba(99, 102, 241, 0.8), /* indigo-500 */
+    rgba(139, 92, 246, 0.8), /* purple-500 */
+    rgba(99, 102, 241, 0.8)  /* indigo-500 */
+  );
+}
+
+.hobby-card-wrapper:nth-child(4n+2) .card-front .hobby-card::before,
+.hobby-card-wrapper:nth-child(4n+2) .card-back .hobby-card::before {
+  background: linear-gradient(45deg, 
+    rgba(16, 185, 129, 0.8),  /* green-500 */
+    rgba(20, 184, 166, 0.8),  /* teal-500 */
+    rgba(16, 185, 129, 0.8)   /* green-500 */
+  );
+}
+
+.hobby-card-wrapper:nth-child(4n+3) .card-front .hobby-card::before,
+.hobby-card-wrapper:nth-child(4n+3) .card-back .hobby-card::before {
+  background: linear-gradient(45deg, 
+    rgba(244, 63, 94, 0.8),   /* rose-500 */
+    rgba(236, 72, 153, 0.8),  /* pink-500 */
+    rgba(244, 63, 94, 0.8)    /* rose-500 */
+  );
+}
+
+.hobby-card-wrapper:nth-child(4n+4) .card-front .hobby-card::before,
+.hobby-card-wrapper:nth-child(4n+4) .card-back .hobby-card::before {
+  background: linear-gradient(45deg, 
+    rgba(245, 158, 11, 0.8),  /* amber-500 */
+    rgba(249, 115, 22, 0.8),  /* orange-500 */
+    rgba(245, 158, 11, 0.8)   /* amber-500 */
+  );
+}
+
+/* Moving gradient animation */
+@keyframes borderGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fix for back button in dark mode */
+.dark .card-back button {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: rgb(165, 180, 252) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.dark .card-back button:hover {
+  background-color: rgba(99, 102, 241, 0.4) !important;
+}
+
+/* Make gradients work on touch devices */
+@media (hover: none) {
+  .hobby-card::before {
+    opacity: 0.6;
+  }
 }
