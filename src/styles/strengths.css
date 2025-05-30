@@ -1,0 +1,19 @@
+.strength-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.strength-item:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strength-item {
+    transition: none;
+  }
+  
+  .strength-item:hover {
+    transform: none;
+  }
+}
