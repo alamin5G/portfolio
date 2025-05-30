@@ -282,27 +282,45 @@ const App = () => {
     "Team Collaboration", "Problem-Solving", "Communication Skill", "Commitment to Quality within Deadline"
   ];
 
+    // Update your hobbies array with more detailed information:
+  
   const hobbies = [
-    { name: "Exploring distant community", icon: (
-      <svg className="w-6 h-6 text-indigo-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-      </svg>
-    ) },
-    { name: "Getting lost in a good book", icon: (
-      <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 17H7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v13c0 .55-.45 1-1 1zM9 9H7V7h2v2zm4 0h-2V7h2v2zm4 0h-2V7h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z" />
-      </svg>
-    ) },
-    { name: "Capturing nature", icon: (
-      <svg className="w-6 h-6 text-teal-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z" />
-      </svg>
-    ) },
-    { name: "Aid and support", icon: (
-      <svg className="w-6 h-6 text-rose-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-      </svg>
-    ) }
+    { 
+      name: "Exploring distant community", 
+      description: "Traveling to remote areas to connect with different cultures and understand diverse perspectives.",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+      ) 
+    },
+    { 
+      name: "Getting lost in a good book", 
+      description: "Reading novels and non-fiction books that expand my knowledge and fuel my imagination.",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 17H7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v13c0 .55-.45 1-1 1z" />
+        </svg>
+      ) 
+    },
+    { 
+      name: "Capturing nature", 
+      description: "Photography that showcases the beauty of landscapes and everyday moments around Bangladesh.",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z" />
+        </svg>
+      ) 
+    },
+    { 
+      name: "Aid and support", 
+      description: "Volunteering with local organizations to support community development and education initiatives.",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+        </svg>
+      ) 
+    }
   ];
 
   const references = [
@@ -609,21 +627,86 @@ const scrollToSection = (id) => {
         </section>
 
         {/* Hobbies Section */}
-        <section id="hobbies" className="py-16 md:py-24 bg-gray-100 p-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 mb-12">My Hobbies</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-              {hobbies.map((hobby, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 cursor-pointer">
-                  <div className="mb-4 flex justify-center">
-                    {hobby.icon}
+       
+      
+            <section id="hobbies" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4 relative overflow-hidden">
+        {/* Interactive background shapes */}
+        <div className="absolute top-0 left-0 w-40 h-40 bg-indigo-300/10 dark:bg-indigo-500/20 rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+        <div className="absolute top-1/4 right-1/5 w-24 h-24 bg-purple-300/10 dark:bg-purple-500/20 rounded-full translate-y-1/4 animate-float" style={{animationDelay: "1.5s"}}></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-300/10 dark:bg-pink-500/20 rounded-full translate-x-1/4 translate-y-1/4 animate-pulse" style={{animationDelay: "2s"}}></div>
+        
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6">
+            My <AnimatedName name="Hobbies" />
+          </h2>
+          <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-16 max-w-xl mx-auto">
+            When I'm not coding, you'll find me enjoying these activities that help me stay creative, balanced, and inspired.
+          </p>
+          
+          {/* Staggered card layout to prevent overlap */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+            {hobbies.map((hobby, index) => (
+              <div key={index} className="hobby-card-wrapper relative"
+                   style={{ marginTop: index % 2 === 1 ? '2rem' : '0' }}>
+                <div className="hobby-card bg-white dark:bg-gray-750 rounded-xl shadow-xl overflow-hidden
+                               group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                  {/* Gradient header with animated icon */}
+                  <div className={`h-28 flex items-center justify-center bg-gradient-to-r 
+                    ${index % 4 === 0 ? 'from-indigo-500 to-purple-600' : ''}
+                    ${index % 4 === 1 ? 'from-green-500 to-teal-600' : ''}
+                    ${index % 4 === 2 ? 'from-rose-500 to-pink-600' : ''}
+                    ${index % 4 === 3 ? 'from-amber-500 to-orange-600' : ''}
+                    overflow-hidden relative
+                  `}>
+                    {/* Animated decorative elements */}
+                    <div className="absolute top-0 left-0 w-full h-full opacity-20">
+                      <div className="absolute top-1/4 left-1/4 w-12 h-12 rounded-full bg-white/30 transform scale-0 group-hover:scale-100 transition-transform duration-700 delay-100"></div>
+                      <div className="absolute bottom-1/4 right-1/4 w-8 h-8 rounded-full bg-white/20 transform scale-0 group-hover:scale-100 transition-transform duration-700 delay-200"></div>
+                    </div>
+                    
+                    {/* Icon with interactive animation */}
+                    <div className="text-white transform group-hover:scale-125 group-hover:rotate-3 transition-all duration-500">
+                      {hobby.icon}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800">{hobby.name}</h3>
+                  
+                  {/* Card body with animated content reveal */}
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+                      {hobby.name}
+                    </h3>
+                    <div className="h-24 overflow-hidden">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm transform translate-y-0 group-hover:translate-y-0 transition-transform duration-500">
+                        {hobby.description || `I enjoy ${hobby.name.toLowerCase()} in my free time.`}
+                      </p>
+                    </div>
+                    
+                    {/* Interactive button that appears on hover */}
+                    <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                      <button className={`text-xs font-medium py-1 px-4 rounded-full
+                        ${index % 4 === 0 ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200' : ''}
+                        ${index % 4 === 1 ? 'bg-green-100 text-green-700 hover:bg-green-200' : ''}
+                        ${index % 4 === 2 ? 'bg-rose-100 text-rose-700 hover:bg-rose-200' : ''}
+                        ${index % 4 === 3 ? 'bg-amber-100 text-amber-700 hover:bg-amber-200' : ''}
+                      `}>
+                        Learn more
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
+                
+                {/* Decorative shape behind card only visible on hover */}
+                <div className={`absolute -z-10 inset-0 -m-3 rounded-xl transform scale-90 opacity-0 group-hover:opacity-50 group-hover:scale-105 transition-all duration-500
+                  ${index % 4 === 0 ? 'bg-indigo-200/30 dark:bg-indigo-900/30' : ''}
+                  ${index % 4 === 1 ? 'bg-green-200/30 dark:bg-green-900/30' : ''}
+                  ${index % 4 === 2 ? 'bg-rose-200/30 dark:bg-rose-900/30' : ''}
+                  ${index % 4 === 3 ? 'bg-amber-200/30 dark:bg-amber-900/30' : ''}
+                `}></div>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
 
         {/* Contact Section */}
