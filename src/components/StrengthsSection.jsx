@@ -1,10 +1,16 @@
-import { Brain, Clock, MessageCircle, Users } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { Brain, ChevronDown, ChevronUp, Clock, MessageCircle, Users } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const StrengthsSection = ({ strengths }) => {
   const strengthsRef = useRef(null);
+  const [expandedStrength, setExpandedStrength] = useState(null);
+  const [hoveredStrength, setHoveredStrength] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Set loaded after initial render for animations
+    setIsLoaded(true);
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,15 +41,15 @@ const StrengthsSection = ({ strengths }) => {
   // Map icons to strengths based on keywords
   const getIcon = (strength) => {
     if (strength.toLowerCase().includes('team') || strength.toLowerCase().includes('collaboration')) {
-      return <Users className="w-6 h-6" />; // Changed from PuzzlePiece to Users
+      return <Users className="w-7 h-7" />; 
     } else if (strength.toLowerCase().includes('problem') || strength.toLowerCase().includes('solving')) {
-      return <Brain className="w-6 h-6" />;
+      return <Brain className="w-7 h-7" />;
     } else if (strength.toLowerCase().includes('communication') || strength.toLowerCase().includes('skill')) {
-      return <MessageCircle className="w-6 h-6" />;
+      return <MessageCircle className="w-7 h-7" />;
     } else if (strength.toLowerCase().includes('quality') || strength.toLowerCase().includes('deadline')) {
-      return <Clock className="w-6 h-6" />;
+      return <Clock className="w-7 h-7" />;
     } else {
-      return <Users className="w-6 h-6" />; // Changed from PuzzlePiece to Users
+      return <Users className="w-7 h-7" />;
     }
   };
 
@@ -53,46 +59,159 @@ const StrengthsSection = ({ strengths }) => {
       'from-indigo-500 to-purple-600',
       'from-blue-500 to-cyan-600',
       'from-emerald-500 to-green-600',
-      'from-amber-500 to-orange-600',
-      'from-rose-500 to-pink-600'
+      'from-amber-500 to-orange-600'
     ];
     
     return gradients[index % gradients.length];
   };
 
+  const toggleExpand = (index) => {
+    setExpandedStrength(expandedStrength === index ? null : index);
+  };
+
+  // Helper function to generate detailed descriptions for strengths
+  const getStrengthDetailedDescription = (strength) => {
+    const descriptions = {
+      "Team Collaboration": [
+        "Active participation in agile development environments",
+        "Experience with pair programming and code reviews",
+        "Ability to synthesize ideas from diverse team members",
+        "History of successful cross-functional collaboration"
+      ],
+      "Problem-Solving": [
+        "Analytical approach to debugging and troubleshooting",
+        "Experience with complex algorithmic challenges",
+        "Ability to break down large problems into manageable pieces",
+        "Data-driven decision making when evaluating solutions"
+      ],
+      "Communication Skill": [
+        "Clear documentation of code and processes",
+        "Effective presentation of technical concepts to non-technical stakeholders",
+        "Active listening to understand requirements fully",
+        "Regular and concise progress updates"
+      ],
+      "Commitment to Quality within Deadline": [
+        "Consistent delivery of well-tested code",
+        "Balanced approach to perfectionism and pragmatism",
+        "Proficiency with CI/CD and automated testing",
+        "Careful prioritization to meet critical deadlines"
+      ]
+    };
+    
+    return descriptions[strength] || [
+      "Proven track record of applying this strength in professional settings",
+      "Continual development through practice and learning",
+      "Adaptable application across different project contexts",
+      "Recognition from peers and mentors in this area"
+    ];
+  };
+
   return (
-    <div ref={strengthsRef} className="container mx-auto max-w-4xl">
-      <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">
+  <div ref={strengthsRef} className="container mx-auto max-w-4xl">
+    <div className="relative mb-16">
+      <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400">
         My Strengths
       </h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {strengths.map((strength, index) => (
+      {/* Decorative elements */}
+      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+    </div>
+    
+    {/* Fixed grid layout - ensure it's displayed as grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+      {strengths.map((strength, index) => (
+        <div 
+          key={index} 
+          className={`strength-item transition-all duration-700 ease-out
+            bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl overflow-hidden
+            ${expandedStrength === index ? 'ring-2 ring-offset-2 ring-indigo-500 dark:ring-indigo-400' : ''}
+            ${hoveredStrength === index && expandedStrength !== index ? 'transform-gpu hover:-translate-y-2' : ''}`}
+          onMouseEnter={() => setHoveredStrength(index)}
+          onMouseLeave={() => setHoveredStrength(null)}
+        >
           <div 
-            key={index} 
-            className={`strength-item opacity-0 transform translate-y-8 transition-all duration-700 ease-out
-              bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl p-6
-              border-b-4 border-transparent hover:border-b-4 hover:border-indigo-500
-              dark:hover:border-indigo-400 flex items-start space-x-4`}
+            onClick={() => toggleExpand(index)}
+            className="cursor-pointer flex items-start p-6"
           >
-            <div className={`p-3 rounded-lg bg-gradient-to-r ${getGradient(index)} text-white`}>
+            <div className={`p-3 rounded-lg bg-gradient-to-r ${getGradient(index)} text-white transition-all duration-300
+              ${hoveredStrength === index ? 'scale-110 rotate-3' : ''}`}>
               {getIcon(strength)}
             </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
-                {strength}
-              </h3>
+            
+            <div className="ml-4 flex-1">
+              <div className="flex justify-between items-center">
+                <h3 className={`text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 transition-all duration-300
+                  ${hoveredStrength === index ? 'text-indigo-600 dark:text-indigo-400' : ''}`}>
+                  {strength}
+                </h3>
+                {expandedStrength === index ? 
+                  <ChevronUp className="w-5 h-5 text-gray-500" /> : 
+                  <ChevronDown className="w-5 h-5 text-gray-500" />}
+              </div>
               <p className="text-gray-600 dark:text-gray-300">
                 {getStrengthDescription(strength)}
               </p>
             </div>
           </div>
+  
+            
+            {/* Expandable content */}
+            <div 
+              className={`px-6 pb-6 pt-0 transition-all duration-500 ease-in-out overflow-hidden
+                ${expandedStrength === index ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
+            >
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-2">
+                <ul className="space-y-2">
+                  {getStrengthDetailedDescription(strength).map((detail, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className={`inline-block w-2 h-2 mt-1.5 mr-2 rounded-full bg-gradient-to-r ${getGradient(index)}`}></span>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className={`mt-4 pt-3 text-center transition-all duration-300 delay-200
+                  ${expandedStrength === index ? 'opacity-100' : 'opacity-0'}`}>
+                  <button 
+                    className={`px-4 py-1 text-xs font-medium rounded-full bg-gradient-to-r ${getGradient(index)} text-white transform transition-transform hover:scale-105`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleExpand(index);
+                    }}
+                  >
+                    Show Less
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
 
-      <div className="mt-12 p-6 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl shadow-inner">
-        <p className="text-center text-gray-700 dark:text-gray-300 italic">
-          "The strengths that make me an effective developer are the same ones that make me a valuable team member."
+      {/* Interactive quotation */}
+      <div className="mt-16 p-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-xl shadow-inner relative overflow-hidden">
+        {/* Animated particle effect */}
+                {/* Animated particle effect - more particles with better animation distribution */}
+        <div className={`strength-particles ${isLoaded ? 'is-loaded' : ''}`}>
+          {[...Array(30)].map((_, i) => (
+            <div 
+              key={i} 
+              className="particle"
+              style={{
+                '--delay': `${i * 0.3}s`, // Faster sequence of appearances
+                '--size': `${Math.random() * 8 + 4}px`, // Slightly smaller particles
+                '--duration': `${Math.random() * 5 + 7}s`, // More consistent duration
+                '--x-end': `${Math.random() * 100}%`,
+                '--x-start': `${Math.random() * 100}%`, 
+                '--opacity': `${Math.random() * 0.4 + 0.2}` // Higher minimum opacity
+              }}
+            ></div>
+          ))}
+        </div>
+
+        <p className="text-center text-xl text-gray-700 dark:text-gray-300 italic relative z-10 font-light">
+          "The strengths that make me an <span className="text-indigo-600 dark:text-indigo-400 font-medium">effective developer</span> are the same ones that make me a <span className="text-purple-600 dark:text-purple-400 font-medium">valuable team member</span>."
         </p>
       </div>
     </div>

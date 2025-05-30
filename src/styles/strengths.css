@@ -1,19 +1,118 @@
+/* Base animations */
 .strength-item.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-.strength-item:hover {
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
+.strength-item {
+  transition: all 0.4s ease-out;
+  opacity: 1 !important; /* Ensure items are always visible */
+  transform: translateY(0) !important; /* Prevent unintended movement */
 }
 
+/* Interactive particles effect */
+.strength-particles {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.strength-particles.is-loaded {
+  opacity: 1;
+}
+
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: linear-gradient(to right, #c7d2fe80, #a5b4fc80);
+  bottom: 0;
+  left: var(--x-start);
+  opacity: var(--opacity);
+  animation: float var(--duration) ease-in-out infinite var(--delay);
+  pointer-events: none; /* This ensures hover events pass through */
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: var(--opacity);
+  }
+  50% {
+    transform: translateY(-150px) scale(1.2);
+    opacity: calc(var(--opacity) * 0.7);
+  }
+  100% {
+    transform: translateY(-300px) scale(0.8);
+    left: var(--x-end);
+    opacity: 0;
+  }
+}
+
+/* New animation for continual particle appearance */
+@keyframes continuousFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: var(--opacity);
+  }
+  25% {
+    transform: translateY(-75px) scale(1.1);
+    opacity: calc(var(--opacity) * 0.85);
+  }
+  50% {
+    transform: translateY(-150px) scale(1.2);
+    opacity: calc(var(--opacity) * 0.7);
+  }
+  75% {
+    transform: translateY(-225px) scale(1);
+    opacity: calc(var(--opacity) * 0.4);
+  }
+  95% {
+    transform: translateY(-290px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Enhanced hover and focus effects */
+.strength-item:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-5px) !important; /* Only apply this transform on hover */
+  z-index: 10; /* Ensure the hovered card stays on top */
+}
+
+.strength-item:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Fix for grid layout on hover */
+.grid {
+  display: grid !important; /* Force grid to maintain structure */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .strength-item {
+    transition: none;
+  }
+  .particle {
+    display: none;
+  }
+}
+
+/* Prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .strength-item {
     transition: none;
   }
-  
   .strength-item:hover {
-    transform: none;
+    transform: none !important;
+  }
+  .particle {
+    animation: none;
+    display: none;
   }
 }
