@@ -57,6 +57,8 @@ const ProjectCard = ({ project }) => {
       }
     }
   }, [isFlipped]);
+
+  
   
   // Get a color scheme for the project based on its name
   const getProjectColor = () => {
@@ -74,15 +76,94 @@ const ProjectCard = ({ project }) => {
     return projectColors[colorIndex];
   };
   
-  const projectColors = [
-    { primary: 'from-indigo-500 to-blue-500', hover: 'from-indigo-600 to-blue-600', light: 'bg-indigo-50 dark:bg-indigo-900/30', text: 'text-indigo-600 dark:text-indigo-300' },
-    { primary: 'from-rose-500 to-pink-500', hover: 'from-rose-600 to-pink-600', light: 'bg-rose-50 dark:bg-rose-900/30', text: 'text-rose-600 dark:text-rose-300' },
-    { primary: 'from-teal-500 to-emerald-500', hover: 'from-teal-600 to-emerald-600', light: 'bg-teal-50 dark:bg-teal-900/30', text: 'text-teal-600 dark:text-teal-300' },
-    { primary: 'from-amber-500 to-orange-500', hover: 'from-amber-600 to-orange-600', light: 'bg-amber-50 dark:bg-amber-900/30', text: 'text-amber-600 dark:text-amber-300' },
-    { primary: 'from-violet-500 to-purple-500', hover: 'from-violet-600 to-purple-600', light: 'bg-violet-50 dark:bg-violet-900/30', text: 'text-violet-600 dark:text-violet-300' }
-  ];
+    // Only change this part - the color combinations
+ // Updated color combinations with more distinct palettes and no blue
+const projectColors = [
+  // Deep purple to violet gradient
+  { 
+    primary: 'from-purple-600 to-violet-500', 
+    hover: 'from-purple-700 to-violet-600', 
+    light: 'bg-purple-50 dark:bg-purple-900/30', 
+    text: 'text-purple-600 dark:text-purple-300',
+    border: 'border-purple-200 dark:border-purple-800'
+  },
   
+  // Rich emerald to teal gradient
+  { 
+    primary: 'from-emerald-600 to-teal-500', 
+    hover: 'from-emerald-700 to-teal-600', 
+    light: 'bg-emerald-50 dark:bg-emerald-900/30', 
+    text: 'text-emerald-600 dark:text-emerald-300',
+    border: 'border-emerald-200 dark:border-emerald-800'
+  },
+  
+  // Warm amber to orange gradient
+  { 
+    primary: 'from-amber-500 to-orange-500', 
+    hover: 'from-amber-600 to-orange-600', 
+    light: 'bg-amber-50 dark:bg-amber-900/30', 
+    text: 'text-amber-600 dark:text-amber-300',
+    border: 'border-amber-200 dark:border-amber-800'
+  },
+  
+  // Rose to fuchsia gradient
+  { 
+    primary: 'from-rose-500 to-fuchsia-500', 
+    hover: 'from-rose-600 to-fuchsia-600', 
+    light: 'bg-rose-50 dark:bg-rose-900/30', 
+    text: 'text-rose-600 dark:text-rose-300',
+    border: 'border-rose-200 dark:border-rose-800'
+  },
+  
+  // Deep red to crimson gradient
+  { 
+    primary: 'from-red-600 to-rose-500', 
+    hover: 'from-red-700 to-rose-600', 
+    light: 'bg-red-50 dark:bg-red-900/30', 
+    text: 'text-red-600 dark:text-red-300',
+    border: 'border-red-200 dark:border-red-800'
+  }
+];
+    
   const colorScheme = getProjectColor();
+
+    // Add this inside your useEffect hook
+ 
+        useEffect(() => {
+      if (cardRef.current && colorScheme) {
+        try {
+          // Parse the color names from the primary gradient - more robust approach
+          const parts = colorScheme.primary.split(' ');
+          const startColor = parts.find(p => p.startsWith('from-'))?.replace('from-', '') || 'purple';
+          const endColor = parts.find(p => p.startsWith('to-'))?.replace('to-', '') || 'violet';
+          
+          // Set CSS variables for the gradient colors based on Tailwind's palette
+          const colorMap = {
+            'purple': '#9333ea',
+            'violet': '#7c3aed',
+            'emerald': '#10b981',
+            'teal': '#14b8a6',
+            'amber': '#f59e0b',
+            'orange': '#f97316',
+            'rose': '#e11d48',
+            'fuchsia': '#d946ef',
+            'red': '#dc2626'
+          };
+          
+          // Extract base color names - handle potential undefined values
+          const startBase = startColor?.split('-')[0] || 'purple';
+          const endBase = endColor?.split('-')[0] || 'violet';
+          
+          cardRef.current.style.setProperty('--gradient-start', colorMap[startBase] || '#9333ea');
+          cardRef.current.style.setProperty('--gradient-end', colorMap[endBase] || '#d946ef');
+        } catch (error) {
+          // Fallback to default colors if parsing fails
+          cardRef.current.style.setProperty('--gradient-start', '#9333ea');
+          cardRef.current.style.setProperty('--gradient-end', '#d946ef');
+          console.error('Error setting color variables:', error);
+        }
+      }
+    }, [colorScheme]);
   
   return (
     <div 
@@ -97,10 +178,17 @@ const ProjectCard = ({ project }) => {
         onClick={() => setIsFlipped(!isFlipped)}
       >
         {/* Front of card */}
-        <div className="absolute w-full h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden backface-hidden">
-          {/* Top colored bar */}
-          <div className={`h-1.5 bg-gradient-to-r ${colorScheme.primary} w-full`}></div>
-          
+       <div className="absolute w-full h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden backface-hidden border border-transparent transition-all duration-300 group">
+  {/* Animated border wrapper - new! */}
+  <div className={`absolute inset-0 -z-10 rounded-xl animate-gradient-border opacity-0 group-hover:opacity-100 transition-opacity duration-300`} style={{
+    background: `linear-gradient(60deg, var(--gradient-start, #9333ea), var(--gradient-end, #d946ef))`,
+    backgroundSize: '300% 300%',
+    filter: 'blur(0.5px)'
+  }}></div>
+  
+  {/* Top colored bar - updated with animation */}
+  <div className={`h-1.5 bg-gradient-to-r ${colorScheme.primary} w-full animate-gradient-shift`}></div>
+  
           <div className="p-6">
             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-1.5">{project.name}</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm">{project.organization} | {project.duration}</p>
