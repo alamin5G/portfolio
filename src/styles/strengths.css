@@ -117,3 +117,154 @@
   }
 }
 
+/* Add these new gradient border styles to your existing CSS */
+
+/* Gradient borders for strength cards */
+.gradient-border-0 {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: 
+    linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(to right, rgba(123, 104, 238, 0.3), rgba(168, 85, 247, 0.3));
+}
+
+.dark .gradient-border-0 {
+  background-image: 
+    linear-gradient(to right, #1f2937, #1f2937),
+    linear-gradient(to right, rgba(123, 104, 238, 0.4), rgba(168, 85, 247, 0.4));
+}
+
+.gradient-border-1 {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: 
+    linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(to right, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3));
+}
+
+.dark .gradient-border-1 {
+  background-image: 
+    linear-gradient(to right, #1f2937, #1f2937),
+    linear-gradient(to right, rgba(59, 130, 246, 0.4), rgba(6, 182, 212, 0.4));
+}
+
+.gradient-border-2 {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: 
+    linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(to right, rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.3));
+}
+
+.dark .gradient-border-2 {
+  background-image: 
+    linear-gradient(to right, #1f2937, #1f2937),
+    linear-gradient(to right, rgba(16, 185, 129, 0.4), rgba(5, 150, 105, 0.4));
+}
+
+.gradient-border-3 {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: 
+    linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(to right, rgba(245, 158, 11, 0.3), rgba(217, 119, 6, 0.3));
+}
+
+.dark .gradient-border-3 {
+  background-image: 
+    linear-gradient(to right, #1f2937, #1f2937),
+    linear-gradient(to right, rgba(245, 158, 11, 0.4), rgba(217, 119, 6, 0.4));
+}
+
+/* Animated gradient overlays */
+.gradient-border-glow-0 {
+  background: linear-gradient(45deg, 
+    rgba(123, 104, 238, 0) 0%, 
+    rgba(123, 104, 238, 0.3) 25%, 
+    rgba(168, 85, 247, 0.3) 50%, 
+    rgba(123, 104, 238, 0.3) 75%, 
+    rgba(123, 104, 238, 0) 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease-in-out infinite;
+  transition: opacity 0.5s ease;
+}
+
+.gradient-border-glow-1 {
+  background: linear-gradient(45deg, 
+    rgba(59, 130, 246, 0) 0%, 
+    rgba(59, 130, 246, 0.3) 25%, 
+    rgba(6, 182, 212, 0.3) 50%, 
+    rgba(59, 130, 246, 0.3) 75%, 
+    rgba(59, 130, 246, 0) 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease-in-out infinite;
+  animation-delay: 1s;
+  transition: opacity 0.5s ease;
+}
+
+.gradient-border-glow-2 {
+  background: linear-gradient(45deg, 
+    rgba(16, 185, 129, 0) 0%, 
+    rgba(16, 185, 129, 0.3) 25%, 
+    rgba(5, 150, 105, 0.3) 50%, 
+    rgba(16, 185, 129, 0.3) 75%, 
+    rgba(16, 185, 129, 0) 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease-in-out infinite;
+  animation-delay: 2s;
+  transition: opacity 0.5s ease;
+}
+
+.gradient-border-glow-3 {
+  background: linear-gradient(45deg, 
+    rgba(245, 158, 11, 0) 0%, 
+    rgba(245, 158, 11, 0.3) 25%, 
+    rgba(217, 119, 6, 0.3) 50%, 
+    rgba(245, 158, 11, 0.3) 75%, 
+    rgba(245, 158, 11, 0) 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease-in-out infinite;
+  animation-delay: 3s;
+  transition: opacity 0.5s ease;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dark .gradient-border-glow-0,
+.dark .gradient-border-glow-1,
+.dark .gradient-border-glow-2,
+.dark .gradient-border-glow-3 {
+  opacity: 0.5; /* Slightly brighter glow in dark mode */
+}
+
+/* Make sure the button colors match their respective cards */
+button.show-less-0 {
+  background-image: linear-gradient(to right, #6366f1, #a855f7);
+}
+
+button.show-less-1 {
+  background-image: linear-gradient(to right, #3b82f6, #06b6d4);
+}
+
+button.show-less-2 {
+  background-image: linear-gradient(to right, #10b981, #059669);
+}
+
+button.show-less-3 {
+  background-image: linear-gradient(to right, #f59e0b, #d97706);
+}
