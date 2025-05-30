@@ -1,6 +1,7 @@
-import { Award, Brain, Briefcase, Code, Database, GraduationCap, Lightbulb } from 'lucide-react';
+import { Brain, Briefcase, Code, Database, GraduationCap, Lightbulb } from 'lucide-react';
 import AnimatedName from './components/AnimatedName';
 import ButterflyEffect from './components/ButterflyEffect';
+import CertificatesSection from './components/CertificatesSection';
 import ContactFloatingElements from './components/ContactFloatingElements';
 import ContactForm from './components/ContactForm';
 import FloatingIcons from './components/FloatingIcons';
@@ -15,9 +16,12 @@ import ThemeToggle from './components/ThemeToggle';
 import TiltImage from './components/TiltImage';
 import TypewriterEffect from './components/TypewriterEffect';
 
+        
+        // Then replace your certificates section with:
 
 // Add this import at the top of your App.js
 import './styles/animations.css'; // Ensure this path is correct
+import './styles/certificates.css';
 import './styles/footer.css'; // Ensure this path is correct
 import './styles/hobbies-animation.css';
 import './styles/strengths.css';
@@ -269,20 +273,24 @@ const App = () => {
     }
   ];
 
-  const certificates = [
-    {
-      name: "Core Java Specialization",
-      issuer: "Coursera | Learn Quest",
-      date: "01/2025",
-      link: "https://www.coursera.org/account/accomplishments/specialization/1NOUKO7KW6QL"
-    },
-    {
-      name: "Machine Learning for All",
-      issuer: "Coursera | University of London",
-      date: "02/2025",
-      link: "https://www.coursera.org/account/accomplishments/verify/98V8W7YWFXGD"
-    }
-  ];
+  
+const certificates = [
+  {
+    name: "Core Java Specialization",
+    issuer: "Coursera | Learn Quest",
+    date: "01/2025",
+    link: "https://www.coursera.org/account/accomplishments/specialization/1NOUKO7KW6QL",
+    skills: ["Java SE", "OOP", "Collections", "Concurrency"]
+  },
+  {
+    name: "Machine Learning for All",
+    issuer: "Coursera | University of London",
+    date: "02/2025",
+    link: "https://www.coursera.org/account/accomplishments/verify/98V8W7YWFXGD",
+    skills: ["ML Basics", "Python", "Data Analysis"]
+  }
+  // You can easily add more certificates here in the future
+];
 
   const strengths = [
     "Team Collaboration", "Problem-Solving", "Communication Skill", "Commitment to Quality within Deadline"
@@ -608,26 +616,10 @@ const App = () => {
           </div>
         </section>
 
+        
         {/* Certificates Section */}
-        <section id="certificates" className="py-16 md:py-24 bg-gray-100 p-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold text-center text-indigo-700 mb-12">Certificates</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {certificates.map((cert, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-500">
-                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 flex items-center">
-                    <Award className="w-6 h-6 mr-2 text-blue-600" />
-                    {cert.name}
-                  </h3>
-                  <p className="text-gray-600 mb-1">{cert.issuer}</p>
-                  <p className="text-gray-600 mb-3">Issued: {cert.date}</p>
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline font-medium">
-                    View Certificate
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
+        <section id="certificates" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 p-4">
+          <CertificatesSection certificates={certificates} />
         </section>
 
         {/* Strengths Section */}
