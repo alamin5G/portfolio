@@ -1,8 +1,8 @@
 import { Award, Brain, Briefcase, Code, Database, GraduationCap, Lightbulb } from 'lucide-react';
 import AnimatedName from './components/AnimatedName';
 import ButterflyEffect from './components/ButterflyEffect';
+import ContactFloatingElements from './components/ContactFloatingElements';
 import ContactForm from './components/ContactForm';
-import EasterEgg from './components/EasterEgg';
 import FloatingIcons from './components/FloatingIcons';
 import InteractiveSkill from './components/InteractiveSkill';
 import MobileMenu from './components/MobileMenu';
@@ -120,12 +120,7 @@ const App = () => {
   "Transforming ideas into scalable solutions"
 ];
 
-  const skills = {
-    programming: ["Java", "Python", "C#", "JavaScript"],
-    frameworks: ["Spring Boot", "Thymeleaf", "NextJs", "Restful API"],
-    databases: ["MySQL", "PostgreSQL", "Git & GitHub", "Docker"],
-    ai_ml: ["Pytorch", "Supervised Learning", "Image Recognition", "Algorithm Design"]
-  };
+  
 
   const skillLevels = {
     programming: {
@@ -357,7 +352,7 @@ const scrollToSection = (id) => {
   return (
   <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen relative">
     {/* Particle Background */}
-    <EasterEgg />   
+    {/* <EasterEgg />    */}
     {/* Navigation Header */}
     <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 z-50 p-4">
       <nav className="container mx-auto flex justify-between items-center">
@@ -631,27 +626,57 @@ const scrollToSection = (id) => {
           </div>
         </section>
 
-              <section id="contact" className="py-16 md:py-24 p-4 relative">
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <h2 className="text-4xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-12">Contact</h2>
-          
-          <div className="p-6 rounded-lg shadow-xl relative z-10 
-                          bg-white/70 dark:bg-gray-800/70 backdrop-blur-md">
-            <ContactForm 
-              profile={profile.contact}
-              references={references}
-            />
-          </div>
-        </div>
-      </section>
+
+        {/* Contact Section */}
+   <section id="contact" className="relative py-16 md:py-24 bg-gradient-animated text-white p-4 min-h-[80vh] flex items-center">
+  <ButterflyEffect />
+  <ContactFloatingElements />
+  
+  <div className="container mx-auto max-w-4xl relative z-10">
+    <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6">
+      Let's <AnimatedName name="Connect" />
+    </h1>
+    <p className="text-xl md:text-2xl font-light mb-10 text-center">
+      <TypewriterEffect 
+        text={[
+          "Have a project in mind? Let's discuss it!",
+          "Looking for a skilled developer for your team?",
+          "Need help with your Java or Spring Boot project?",
+          "Want to know more about my experience?",
+          "Ready to collaborate on something awesome?"
+        ]} 
+        typingSpeed={60} 
+        pauseTime={2000} 
+      />
+    </p>
+    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8 transform transition-all duration-300 hover:scale-[1.01]">
+      <ContactForm 
+        profile={profile.contact}
+        references={references}
+      />
+    </div>
+    
+    
+  </div>
+  <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
+      <button 
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="text-white opacity-70 hover:opacity-100 transition-opacity"
+        aria-label="Scroll to top"
+      >
+        <svg className="w-10 h-10 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </button>
+    </div>
+</section>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white text-center p-6 mt-12">
         <div className="container mx-auto">
-          <p>&copy; {new Date().getFullYear()} Md. Alamin. All rights reserved.</p>
-          <p className="text-sm mt-2">Built with React & Tailwind CSS</p>
-        </div>
+          <p>&copy; {new Date().getFullYear()} alamin5g. All rights reserved.</p>
+          </div>
       </footer>
 
       <SectionDebugger sections={sections} />

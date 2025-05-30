@@ -131,14 +131,17 @@ const ContactForm = ({ profile, references }) => {
                     {emailToDisplay}
                   </a>
                   <div className="mt-3">
-                    <button
-                      type="button"
+                    <button type="button"
                       onClick={() => {
                         console.log("Email copy button clicked.");
                         copyToClipboard(profile?.email, 'email');
                       }}
                       disabled={!profile?.email}
-                      className={`btn-copy text-xs px-3 py-1.5 rounded-md font-medium ${copiedEmail ? 'copied' : 'bg-gray-100 dark:bg-gray-700 hover:bg-indigo-100 dark:hover:bg-indigo-900/30'} disabled:opacity-50 disabled:cursor-not-allowed`}
+                      className={`btn-copy text-xs px-3 py-1.5 rounded-md font-medium ${
+                        copiedEmail 
+                          ? 'copied' 
+                          : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-indigo-900/30'
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {copiedEmail ? 'Copied' : 'Copy Email'}
                     </button>
@@ -174,7 +177,11 @@ const ContactForm = ({ profile, references }) => {
                         copyToClipboard(profile?.whatsapp, 'phone');
                       }}
                       disabled={!profile?.whatsapp}
-                      className={`btn-copy text-xs px-3 py-1.5 rounded-md font-medium ${copiedPhone ? 'copied' : 'bg-gray-100 dark:bg-gray-700 hover:bg-green-100 dark:hover:bg-green-900/30'} disabled:opacity-50 disabled:cursor-not-allowed`}
+                      className={`btn-copy text-xs px-3 py-1.5 rounded-md font-medium ${
+                        copiedPhone 
+                          ? 'copied' 
+                          : 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-green-900/30'
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {copiedPhone ? 'Copied' : 'Copy Number'}
                     </button>
