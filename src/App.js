@@ -351,8 +351,7 @@ const scrollToSection = (id) => {
 
   return (
   <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen relative">
-    {/* Particle Background */}
-    {/* <EasterEgg />    */}
+   
     {/* Navigation Header */}
     <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 z-50 p-4">
       <nav className="container mx-auto flex justify-between items-center">
@@ -681,7 +680,6 @@ const scrollToSection = (id) => {
 
       <SectionDebugger sections={sections} />
             
-      
     </div>
   );
 };

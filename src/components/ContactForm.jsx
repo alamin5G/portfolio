@@ -86,7 +86,7 @@ const ContactForm = ({ profile, references }) => {
   // Helper to format WhatsApp links safely
   const formatWhatsAppLink = (number) => {
     if (!number || typeof number !== 'string') return '#';
-    return `https://wa.me/${number.replace(/[\s\-\+()]/g, '')}`;
+    return `https://wa.me/${number.replace(/[\s\-()]/g, '')}`;
   };
 
   // Helper to format tel links safely
