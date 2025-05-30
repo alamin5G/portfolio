@@ -189,7 +189,8 @@ const App = () => {
       ],
       technologies: ["Java", "Spring Boot", "MySQL", "Spring Web MVC", "Spring Data JPA", "Thymeleaf", "Bootstrap", "JavaScript"],
       githubUrl: "https://github.com/alamin5G/CbtGoldLab",
-      liveUrl: "https://github.com/alamin5G/CbtGoldLab" // Optional - remove if you don't have a live demo
+      liveUrl: "https://github.com/alamin5G/CbtGoldLab", // Optional - remove if you don't have a live demo
+      image: "/images/home_page.png" // Optional - add if you have an image
     },
     {
       name: "Electronic Store E-Commerce Application",
