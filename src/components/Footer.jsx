@@ -12,12 +12,16 @@ const Footer = ({ profile }) => {
     "Code is like humor. When you have to explain it, it's bad.",
     "Programming isn't about what you know; it's about what you can figure out.",
     "The best error message is the one that never shows up.",
-    "The most important property of a program is whether it accomplishes the intention of its user.",
     "Java is to JavaScript what car is to carpet.",
     "It's not a bug – it's an undocumented feature.",
     "Deleted code is debugged code.",
-    "The best performance improvement is the transition from the nonworking state to the working state."
-  ];
+    "Simplicity is the soul of efficiency.",
+    "Talk is cheap. Show me the code.",
+    "In order to be irreplaceable, one must always be different.",
+    "Code is poetry.",
+    "Good code is its own best documentation.",
+    "The function of good software is to make the complex appear simple.",
+    "Programming is not about typing, it's about thinking.",];
 
   // Change quote every 8 seconds
   useEffect(() => {
@@ -54,7 +58,7 @@ const Footer = ({ profile }) => {
         {/* Main Footer Content */}
         <div className="flex flex-col items-center">
           {/* Animated Social Links */}
-          <div className="flex space-x-5 mb-4">
+          <div className="flex space-x-5 mb-2">
             <a 
               href={profile?.github || "https://github.com/alamin5g"} 
               target="_blank" 
@@ -100,10 +104,11 @@ const Footer = ({ profile }) => {
             </a>
           </div>
           
-          {/* Interactive wave animation */}
-          <div className="w-24 h-2 my-3 relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
-            <div className="absolute inset-0 wave-animation"></div>
-          </div>
+                {/* Interactive wave animation */}
+        <div className="w-80 h-6 my-2 relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30 hover:scale-105 transition-transform duration-300">
+          <div className="absolute inset-0 wave-animation"></div>
+        </div>
+
           
           {/* Copyright */}
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-4">

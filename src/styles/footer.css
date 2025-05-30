@@ -1,9 +1,9 @@
-/* Wave animation for footer */
+/* Wave animation for footer - more prominent */
 .wave-animation {
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.9) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   width: 200%;
@@ -25,12 +25,7 @@
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
     rgba(255, 255, 255, 0) 100%
   );
-}
-
-/* Hover effects for footer links */
-.footer-icon:hover {
-  filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.5));
 }
