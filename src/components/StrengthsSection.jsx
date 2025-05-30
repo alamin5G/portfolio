@@ -55,15 +55,39 @@ const StrengthsSection = ({ strengths }) => {
 
   // Get appropriate gradient based on index
   const getGradient = (index) => {
-    const gradients = [
-      'from-indigo-500 to-purple-600',
-      'from-blue-500 to-cyan-600',
-      'from-emerald-500 to-green-600',
-      'from-amber-500 to-orange-600'
-    ];
-    
-    return gradients[index % gradients.length];
-  };
+  const gradients = [
+    'from-indigo-500 to-purple-600',
+    'from-blue-500 to-cyan-600',
+    'from-emerald-500 to-green-600',
+    'from-amber-500 to-orange-600'
+  ];
+  
+  return gradients[index % gradients.length];
+};
+
+// Get title color based on index
+const getTitleColor = (index) => {
+  const colors = [
+    'text-indigo-600 dark:text-indigo-400 border-indigo-400',
+    'text-blue-600 dark:text-blue-400 border-blue-400',
+    'text-emerald-600 dark:text-emerald-400 border-emerald-400',
+    'text-amber-600 dark:text-amber-400 border-amber-400'
+  ];
+  
+  return colors[index % colors.length];
+};
+
+// Get background color based on index
+const getTitleBgColor = (index) => {
+  const colors = [
+    'bg-indigo-100 dark:bg-indigo-900/30',
+    'bg-blue-100 dark:bg-blue-900/30',
+    'bg-emerald-100 dark:bg-emerald-900/30',
+    'bg-amber-100 dark:bg-amber-900/30'
+  ];
+  
+  return colors[index % colors.length];
+};
 
   const toggleExpand = (index) => {
     setExpandedStrength(expandedStrength === index ? null : index);
@@ -121,39 +145,40 @@ const StrengthsSection = ({ strengths }) => {
     {/* Fixed grid layout - ensure it's displayed as grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
       {strengths.map((strength, index) => (
-        <div 
-          key={index} 
-          className={`strength-item transition-all duration-700 ease-out
-            bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl overflow-hidden
-            ${expandedStrength === index ? 'ring-2 ring-offset-2 ring-indigo-500 dark:ring-indigo-400' : ''}
-            ${hoveredStrength === index && expandedStrength !== index ? 'transform-gpu hover:-translate-y-2' : ''}`}
-          onMouseEnter={() => setHoveredStrength(index)}
-          onMouseLeave={() => setHoveredStrength(null)}
-        >
-          <div 
-            onClick={() => toggleExpand(index)}
-            className="cursor-pointer flex items-start p-6"
-          >
-            <div className={`p-3 rounded-lg bg-gradient-to-r ${getGradient(index)} text-white transition-all duration-300
-              ${hoveredStrength === index ? 'scale-110 rotate-3' : ''}`}>
-              {getIcon(strength)}
-            </div>
-            
-            <div className="ml-4 flex-1">
-              <div className="flex justify-between items-center">
-                <h3 className={`text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 transition-all duration-300
-                  ${hoveredStrength === index ? 'text-indigo-600 dark:text-indigo-400' : ''}`}>
-                  {strength}
-                </h3>
-                {expandedStrength === index ? 
-                  <ChevronUp className="w-5 h-5 text-gray-500" /> : 
-                  <ChevronDown className="w-5 h-5 text-gray-500" />}
-              </div>
-              <p className="text-gray-600 dark:text-gray-300">
-                {getStrengthDescription(strength)}
-              </p>
-            </div>
-          </div>
+  <div 
+    key={index} 
+    className={`strength-item transition-all duration-700 ease-out
+      bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl overflow-hidden
+      ${expandedStrength === index ? 'ring-2 ring-offset-2 ring-indigo-500 dark:ring-indigo-400' : ''}
+      ${hoveredStrength === index && expandedStrength !== index ? 'transform-gpu hover:-translate-y-2' : ''}`}
+    onMouseEnter={() => setHoveredStrength(index)}
+    onMouseLeave={() => setHoveredStrength(null)}
+  >
+    <div 
+      onClick={() => toggleExpand(index)}
+      className="cursor-pointer flex items-start p-6"
+    >
+      <div className={`p-3 rounded-lg bg-gradient-to-r ${getGradient(index)} text-white transition-all duration-300
+        ${hoveredStrength === index ? 'scale-110 rotate-3' : ''}`}>
+        {getIcon(strength)}
+      </div>
+      
+      <div className="ml-4 flex-1">
+        <div className="flex justify-between items-center">
+          <h3 className={`text-xl font-semibold mb-2 transition-all duration-300 px-3 py-1 rounded-md border
+            ${getTitleColor(index)} ${getTitleBgColor(index)}
+            ${hoveredStrength === index ? 'scale-105' : ''}`}>
+            {strength}
+          </h3>
+          {expandedStrength === index ? 
+            <ChevronUp className="w-5 h-5 text-gray-500" /> : 
+            <ChevronDown className="w-5 h-5 text-gray-500" />}
+        </div>
+        <p className="text-gray-600 dark:text-gray-300 mt-2">
+          {getStrengthDescription(strength)}
+        </p>
+      </div>
+    </div>
   
             
             {/* Expandable content */}
