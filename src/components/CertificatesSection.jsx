@@ -137,7 +137,7 @@ const CertificateCard = ({ certificate, index }) => {
                 transition-all duration-300`}
             >
               <Eye className="w-3 h-3 mr-0.5" />
-              View
+              View Certificate
               <ExternalLink className="w-2.5 h-2.5 ml-0.5" />
             </a>
           </div>
@@ -225,6 +225,8 @@ const PlaceholderCard = () => {
   );
 };
 
+// Only updating the title section - rest of component remains unchanged
+
 const CertificatesSection = ({ certificates = [] }) => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -252,10 +254,27 @@ const CertificatesSection = ({ certificates = [] }) => {
 
   return (
     <div ref={sectionRef} className="container mx-auto px-4 py-10 max-w-6xl">
-      <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-8">
-        My Certificates
-      </h2>
+      {/* Modern, attractive title design */}
+      <div className="relative mb-14">
+        <div className="certificate-title-container text-center mb-8 relative">
+          <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 dark:from-indigo-400 dark:to-blue-400 inline-block">
+            My Certificates
+          </h1>
+          <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full"></div>
+          <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full animate-pulse opacity-75 blur-sm"></div>
+        </div>
+        
+        {/* Optional subtitle */}
+        <p className="text-center text-gray-600 dark:text-gray-400 max-w-xl mx-auto text-sm">
+          Professional certifications and achievements that showcase my expertise and continuous learning
+        </p>
+        
+        {/* Decorative elements */}
+        <div className="absolute -top-8 left-1/4 w-8 h-8 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 animate-ping opacity-75 hidden md:block"></div>
+        <div className="absolute top-4 right-1/4 w-5 h-5 rounded-full bg-blue-500/10 dark:bg-blue-500/20 animate-ping animation-delay-700 opacity-75 hidden md:block"></div>
+      </div>
       
+      {/* Rest of the component stays the same */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {certificates.map((certificate, index) => (
           <div 

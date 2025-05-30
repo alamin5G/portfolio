@@ -353,3 +353,23 @@
     transition: none !important;
   }
 }
+
+/* Add these animation delays at the bottom of your file */
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Optional: Add this subtle effect for the title */
+@keyframes shimmerTitle {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.certificate-title-container h1 {
+  background-size: 200% auto;
+  animation: shimmerTitle 4s linear infinite;
+}
