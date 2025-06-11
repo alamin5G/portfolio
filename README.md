@@ -1,5 +1,5 @@
 
-### Right Shift and Left Shift Operators: Detailed Theory and Python Implementation
+## Right Shift and Left Shift Operators: Detailed Theory with Python Implementation
 
 The **right shift** (`>>`) and **left shift** (`<<`) operators are bitwise operators in programming languages like Python, C, Java, and others. They manipulate the binary representation of integers by shifting their bits to the right or left. These operators are commonly used in low-level programming, performance optimization, and tasks like bit manipulation, encoding, or cryptography.
 
@@ -8,6 +8,7 @@ Below, I’ll explain the theory behind these operators, provide examples with P
 ### **1. Right Shift Operator (`>>`)**
 
 The right shift operator shifts the bits of a number to the right by a specified number of positions. The leftmost bits are filled with the **sign bit** (for signed integers) or **zeros** (for unsigned integers), and the rightmost bits are discarded.
+
 
 #### **Theory**
 
@@ -49,6 +50,7 @@ For a negative number, say `-20` (binary: `11101100` in 8-bit two’s complement
 
 The left shift operator shifts the bits of a number to the left by a specified number of positions. The rightmost bits are filled with **zeros**, and the leftmost bits are discarded.
 
+
 #### **Theory**
 
 - **Syntax**: `number << shift_amount`
@@ -79,13 +81,12 @@ For a negative number, say `-20` (binary: `11101100`):
   - Binary: `11101100 << 1 = 11011000`
   - Decimal: `-40`
 
+
 #### **Key Points**
 
 - The left shift operator appends zeros to the right.
 - It’s equivalent to multiplication by \(2^n\).
-- In Python, since integers are unbounded, left shifts can produce very large numbers without overflow.
-
-### **Python Code Examples**
+- In Python, since integers are unbounded, left shifts can produce very large numbers without overflow.**Python Code Examples**
 
 Below is a Python program demonstrating the right shift (`>>`) and left shift (`<<`) operators with positive and negative numbers.
 
@@ -173,6 +174,4 @@ Original number: -20 (Binary: 11101100)
 
 ### **Conclusion**
 
-The right shift (`>>`) and left shift (`<<`) operators are powerful tools for bit manipulation, offering efficient ways to perform division and multiplication by powers of 2. In Python, these operators are straightforward to use due to unbounded integers, but care must be taken with negative numbers and large shift amounts. The provided Python code demonstrates their behavior, and the PDF generation script allows you to create a formatted document for reference.
-
-eita k proper documentation akare pdf banai dao to
+The right shift (`>>`) and left shift (`<<`) operators are powerful tools for bit manipulation, offering efficient ways to perform division and multiplication by powers of 2. In Python, these operators are straightforward to use due to unbounded integers, but care must be taken with negative numbers and large shift amounts. The provided Python code demonstrates their behavior.
