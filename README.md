@@ -1,4 +1,3 @@
-
 ## Right Shift and Left Shift Operators: Detailed Theory with Python Implementation
 
 The **right shift** (`>>`) and **left shift** (`<<`) operators are bitwise operators in programming languages like Python, C, Java, and others. They manipulate the binary representation of integers by shifting their bits to the right or left. These operators are commonly used in low-level programming, performance optimization, and tasks like bit manipulation, encoding, or cryptography.
@@ -8,7 +7,6 @@ Below, I’ll explain the theory behind these operators, provide examples with P
 ### **1. Right Shift Operator (`>>`)**
 
 The right shift operator shifts the bits of a number to the right by a specified number of positions. The leftmost bits are filled with the **sign bit** (for signed integers) or **zeros** (for unsigned integers), and the rightmost bits are discarded.
-
 
 #### **Theory**
 
@@ -50,7 +48,6 @@ For a negative number, say `-20` (binary: `11101100` in 8-bit two’s complement
 
 The left shift operator shifts the bits of a number to the left by a specified number of positions. The rightmost bits are filled with **zeros**, and the leftmost bits are discarded.
 
-
 #### **Theory**
 
 - **Syntax**: `number << shift_amount`
@@ -80,7 +77,6 @@ For a negative number, say `-20` (binary: `11101100`):
 - Left shift by 1: `-20 << 1`
   - Binary: `11101100 << 1 = 11011000`
   - Decimal: `-40`
-
 
 #### **Key Points**
 
@@ -175,3 +171,23 @@ Original number: -20 (Binary: 11101100)
 ### **Conclusion**
 
 The right shift (`>>`) and left shift (`<<`) operators are powerful tools for bit manipulation, offering efficient ways to perform division and multiplication by powers of 2. In Python, these operators are straightforward to use due to unbounded integers, but care must be taken with negative numbers and large shift amounts. The provided Python code demonstrates their behavior.
+
+
+| Day       | Start Time | End Time |
+| --------- | ---------- | -------- |
+| Saturday  | 08:00 AM   | 10:40 AM |
+| Saturday  | 11:40 AM   | 01:10 PM |
+| Saturday  | 05:25 PM   | 06:00 PM |
+| Sunday    | 08:00 AM   | 08:30 AM |
+| Sunday    | 09:30 AM   | 10:40 AM |
+| Sunday    | 11:40 AM   | 01:10 PM |
+| Sunday    | 05:25 PM   | 06:00 PM |
+| Monday    | 08:00 AM   | 08:30 AM |
+| Monday    | 12:45 PM   | 01:10 PM |
+| Monday    | 05:25 PM   | 06:00 PM |
+| Tuesday   | 08:00 AM   | 08:30 AM |
+| Tuesday   | 12:45 PM   | 02:15 PM |
+| Tuesday   | 05:25 PM   | 06:00 PM |
+| Wednesday | 08:00 AM   | 08:30 AM |
+| Wednesday | 12:45 PM   | 01:10 PM |
+| Wednesday | 04:20 PM   | 06:00 PM |
